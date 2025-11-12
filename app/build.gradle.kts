@@ -49,6 +49,8 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    ndkVersion = "27.0.12077973"
+    buildToolsVersion = "36.1.0"
 }
 
 dependencies {
@@ -56,6 +58,9 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.camera2)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
