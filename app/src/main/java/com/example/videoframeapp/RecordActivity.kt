@@ -2,12 +2,13 @@ package com.example.videoframeapp
 
 import android.content.ContentValues
 import android.Manifest
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.MediaStoreOutputOptions
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.camera.view.PreviewView
+import androidx.compose.foundation.layout.Arrangement
 import androidx.lifecycle.compose.LocalLifecycleOwner
 
 class RecordActivity : ComponentActivity() {
@@ -42,8 +44,25 @@ class RecordActivity : ComponentActivity() {
                 RecordScreen()
             }
         }
+        Log.d("RecordActivity", "onCreate called")
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("RecordActivity", "onPause called")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("RecordActivity", "onStop called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("RecordActivity", "onDestroy called")
+    }
+
 }
 
 private fun startCamera(
@@ -78,6 +97,18 @@ private fun startCamera(
     }, ContextCompat.getMainExecutor(context))
 }
 
+fun playVideo(uri: Uri?) {
+
+}
+
+fun processVideo(uri: Uri?) {
+
+}
+
+fun showComparison(original: Uri?, processed: Uri?) {
+
+}
+
 @Composable
 fun RecordScreen() {
     val context = LocalContext.current
@@ -86,6 +117,9 @@ fun RecordScreen() {
     var recording by remember { mutableStateOf<Recording?>(null)}
     var statusText by remember { mutableStateOf("准备录制 🎬") }
     var videoCapture by remember { mutableStateOf<VideoCapture<Recorder>?>(null) }
+
+    var recordedUri by remember { mutableStateOf<Uri?>(null) }
+    var processedUri by remember { mutableStateOf<Uri?>(null) }
 
     val previewView = remember { PreviewView(context) }
 
@@ -146,10 +180,17 @@ fun RecordScreen() {
                                     statusText = "🔴 正在录像..."
                                 }
                                 is VideoRecordEvent.Finalize -> {
-                                    statusText = "✅ 录像完成: ${event.outputResults.outputUri}"
-                                    recording = null
-                                    event.outputResults.outputUri.let { uri ->
-                                        VideoProcessor.processVideo(uri.toString())
+                                    if (event.hasError()) {
+                                        Log.e("Record", "录像失败: ${event.error}")
+                                    } else {
+                                        statusText = "✅ 录像完成: ${event.outputResults.outputUri}"
+                                        recording = null
+                                        event.outputResults.outputUri?.let { uri ->
+                                            Log.d("Record", "录像完成 URI = $uri")
+                                            recordedUri = uri
+                                            val path: String = uri.toString()
+                                            VideoProcessor.processVideoSafe(path)
+                                        } ?: Log.e("Record", "录像完成，但 URI 为空")
                                     }
                                 }
                             }
@@ -162,6 +203,19 @@ fun RecordScreen() {
         ) {
             Text(if (recording == null) "🎥 开始录制" else "⏹ 停止录制" )
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        if (recordedUri != null) {
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(onClick = { playVideo(recordedUri) }) { Text("▶ 原视频") }
+                Button(onClick = { processVideo(recordedUri) }) { Text("⚡ 逐帧处理") }
+                Button(onClick = { showComparison(recordedUri, processedUri) }) { Text("↔ 对比") }
+            }
+        }
     }
 }
 
@@ -169,12 +223,5 @@ fun RecordScreen() {
 @Preview(showBackground=true, showSystemUi = true)
 @Composable
 fun RecordScreenPreview() {
-    //Surface {
-    //    Column {
-    //        Text("🎥 这是录像界面预览（不显示摄像头）")
-    //        Spacer(Modifier.height(16.dp))
-    //        Button(onClick = {}) { Text("🎬 开始录像")}
-    //    }
-    //}
     RecordScreen()
 }

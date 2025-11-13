@@ -23,6 +23,11 @@ android {
                 cppFlags += "-std=c++17"
             }
         }
+
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
+        }
+
     }
 
     buildTypes {

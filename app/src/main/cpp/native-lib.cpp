@@ -7,9 +7,9 @@
 
 extern "C" JNIEXPORT void JNICALL
 Java_com_example_videoframeapp_VideoProcessor_processVideo(
-        JNIEnv* env,
-        jobject /* this */,
-        jstring path) {
+    JNIEnv* env,
+    jobject /* this */,
+    jstring path) {
 
   const char* cPath = env->GetStringUTFChars(path, nullptr);
   LOGD("ProcessVideo called with path: %s", cPath);
