@@ -2,6 +2,7 @@ package com.example.videoframeapp
 
 import android.content.ContentValues
 import android.Manifest
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -33,6 +34,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.layout.Arrangement
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import kotlin.jvm.java
 
 class RecordActivity : ComponentActivity() {
 
@@ -41,26 +43,17 @@ class RecordActivity : ComponentActivity() {
 
         setContent {
             MaterialTheme {
-                RecordScreen()
+                RecordScreen(
+                    onRecordComplete = { recordedUri->
+                        val intent = Intent(this, ProcessActivity::class.java)
+                        intent.putExtra("video_uri", recordedUri.toString())
+                        startActivity(intent)
+                    }
+                )
             }
         }
         Log.d("RecordActivity", "onCreate called")
 
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("RecordActivity", "onPause called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("RecordActivity", "onStop called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("RecordActivity", "onDestroy called")
     }
 
 }
@@ -110,7 +103,9 @@ fun showComparison(original: Uri?, processed: Uri?) {
 }
 
 @Composable
-fun RecordScreen() {
+fun RecordScreen(
+    onRecordComplete: (Uri) -> Unit
+) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
 
@@ -138,6 +133,13 @@ fun RecordScreen() {
         permissionLauncher.launch(permissions)
     }
 
+    val selectVideoLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) {
+        uri: Uri? ->
+        uri?.let { onRecordComplete(it) }
+    }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -155,66 +157,79 @@ fun RecordScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = {
-                val capture = videoCapture ?:return@Button
-                if (recording == null) {
-                    val name = "VID_${System.currentTimeMillis()}.mp4"
-                    val contentValues = ContentValues().apply {
-                        put(MediaStore.MediaColumns.DISPLAY_NAME, name)
-                        put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
-                        put(MediaStore.MediaColumns.RELATIVE_PATH, "Movies/VideoFrameApp")
-                    }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Button(
+                onClick = { selectVideoLauncher.launch("video/*") }) {
+                Text("📇 库")
+            }
 
-                    val outputOptions = MediaStoreOutputOptions.Builder(
-                        context.contentResolver,
-                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-                    ).setContentValues(contentValues).build()
+            Spacer(modifier = Modifier.weight(1f))
 
-                    recording = capture.output
-                        .prepareRecording(context, outputOptions)
-                        .withAudioEnabled()
-                        .start(ContextCompat.getMainExecutor(context)) { event ->
-                            when (event) {
-                                is VideoRecordEvent.Start -> {
-                                    statusText = "🔴 正在录像..."
-                                }
-                                is VideoRecordEvent.Finalize -> {
-                                    if (event.hasError()) {
-                                        Log.e("Record", "录像失败: ${event.error}")
-                                    } else {
-                                        statusText = "✅ 录像完成: ${event.outputResults.outputUri}"
-                                        recording = null
-                                        event.outputResults.outputUri?.let { uri ->
-                                            Log.d("Record", "录像完成 URI = $uri")
-                                            recordedUri = uri
-                                            val path: String = uri.toString()
-                                            VideoProcessor.processVideoSafe(path)
-                                        } ?: Log.e("Record", "录像完成，但 URI 为空")
+            Button(
+                onClick = @androidx.annotation.RequiresPermission(android.Manifest.permission.RECORD_AUDIO) {
+                    val capture = videoCapture ?:return@Button
+                    if (recording == null) {
+                        val name = "VID_${System.currentTimeMillis()}.mp4"
+                        val contentValues = ContentValues().apply {
+                            put(MediaStore.MediaColumns.DISPLAY_NAME, name)
+                            put(MediaStore.MediaColumns.MIME_TYPE, "video/mp4")
+                            put(MediaStore.MediaColumns.RELATIVE_PATH, "Movies/VideoFrameApp")
+                        }
+
+                        val outputOptions = MediaStoreOutputOptions.Builder(
+                            context.contentResolver,
+                            MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                        ).setContentValues(contentValues).build()
+
+                        recording = capture.output
+                            .prepareRecording(context, outputOptions)
+                            .withAudioEnabled()
+                            .start(ContextCompat.getMainExecutor(context)) { event ->
+                                when (event) {
+                                    is VideoRecordEvent.Start -> {
+                                        statusText = "🔴 正在录像..."
+                                    }
+                                    is VideoRecordEvent.Finalize -> {
+                                        if (event.hasError()) {
+                                            Log.e("Record", "录像失败: ${event.error}")
+                                        } else {
+                                            statusText = "✅ 录像完成: ${event.outputResults.outputUri}"
+                                            recording = null
+                                            event.outputResults.outputUri?.let { uri ->
+                                                Log.d("Record", "录像完成 URI = $uri")
+/*
+                                                recordedUri = uri
+                                                val path: String = uri.toString()
+                                                VideoProcessor.processVideoSafe(path)
+*/
+                                                onRecordComplete(uri)
+                                            } ?: Log.e("Record", "录像完成，但 URI 为空")
+                                        }
                                     }
                                 }
                             }
-                        }
-                } else {
-                    recording?.stop()
-                }
-            },
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Text(if (recording == null) "🎥 开始录制" else "⏹ 停止录制" )
+                    } else {
+                        recording?.stop()
+                    }
+                },
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Text(if (recording == null) "🎥 开始录制" else "⏹ 停止录制" )
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        if (recordedUri != null) {
-            Row(
-                Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                Button(onClick = { playVideo(recordedUri) }) { Text("▶ 原视频") }
-                Button(onClick = { processVideo(recordedUri) }) { Text("⚡ 逐帧处理") }
-                Button(onClick = { showComparison(recordedUri, processedUri) }) { Text("↔ 对比") }
-            }
+        Button(onClick = { selectVideoLauncher.launch("video/*") }) {
+            Text("🧙‍♂️ 处理视频")
         }
     }
 }
@@ -223,5 +238,5 @@ fun RecordScreen() {
 @Preview(showBackground=true, showSystemUi = true)
 @Composable
 fun RecordScreenPreview() {
-    RecordScreen()
+    RecordScreen(onRecordComplete = {})
 }
