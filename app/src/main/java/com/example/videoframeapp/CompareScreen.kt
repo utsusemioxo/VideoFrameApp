@@ -3,65 +3,120 @@ package com.example.videoframeapp
 import android.net.Uri
 import android.widget.VideoView
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.*
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
-/**
- * CompareScreen - 左右对比原视频和处理后视频
- *
- * @param navController 用于返回上一页面
- * @param originalUri 原视频 Uri
- * @param processedUri 处理后视频 Uri
- */
 @Composable
-fun CompareScreen(
+fun CompareScreenSlide(
     navController: NavController,
     originalUri: Uri? = null,
     processedUri: Uri? = null
 ) {
+    val context = LocalContext.current
+
+    // 滑块初始位置：50%
+    var sliderPosition by remember { mutableStateOf(0.5f) }
+
+    // 获取屏幕宽度
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
+    val density = LocalDensity.current
+
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
 
+            // 标题
             Text(
                 text = "视频对比 🎞️",
                 fontSize = 24.sp,
-                fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(16.dp)
             )
 
-            Row(
+            // 视频区域
+            Box(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                    .padding(16.dp)
+                    .background(Color.Black)
             ) {
-                // 原视频
-                VideoPlayerView(
-                    modifier = Modifier.weight(1f).padding(end = 8.dp),
-                    videoUri = originalUri,
-                    label = "原视频"
-                )
+                // 原视频：底层
+                if (originalUri != null) {
+                    AndroidView(
+                        factory = { ctx ->
+                            VideoView(ctx).apply {
+                                setVideoURI(originalUri)
+                                setOnPreparedListener { mp ->
+                                    mp.isLooping = true
+                                    start()
+                                }
+                            }
+                        },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
 
-                // 处理后视频
-                VideoPlayerView(
-                    modifier = Modifier.weight(1f).padding(start = 8.dp),
-                    videoUri = processedUri,
-                    label = "处理后"
+                // 处理后视频：上层，宽度随滑块变化
+                if (processedUri != null) {
+                    AndroidView(
+                        factory = { ctx ->
+                            VideoView(ctx).apply {
+                                setVideoURI(processedUri)
+                                setOnPreparedListener { mp ->
+                                    mp.isLooping = true
+                                    start()
+                                }
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .fillMaxWidth(sliderPosition) // 宽度比例
+                            .align(Alignment.CenterStart)
+                    )
+                }
+
+                // 中间滑块
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(4.dp)
+                        .offset {
+                            // 将 dp 转 px
+                            IntOffset(
+                                x = (sliderPosition * with(density) { screenWidth.toPx() }).toInt(),
+                                y = 0
+                            )
+                        }
+                        .background(Color.White)
+                        .align(Alignment.CenterStart)
+                        .pointerInput(Unit) {
+                            detectHorizontalDragGestures { change, dragAmount ->
+                                change.consume()
+                                val widthPx = with(density) { screenWidth.toPx() }
+                                sliderPosition = (sliderPosition + dragAmount / widthPx).coerceIn(0f, 1f)
+                            }
+                        }
                 )
             }
 
+            // 返回按钮
             Button(
                 onClick = { navController.popBackStack() },
                 modifier = Modifier
@@ -73,60 +128,13 @@ fun CompareScreen(
         }
     }
 }
-
-/**
- * VideoPlayerView - 播放单个视频
- *
- * 使用 AndroidView 包裹 VideoView
- */
-@Composable
-fun VideoPlayerView(
-    modifier: Modifier = Modifier,
-    videoUri: Uri?,
-    label: String
-) {
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = label, fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold)
-
-        if (videoUri != null) {
-            AndroidView(
-                factory = { context ->
-                    VideoView(context).apply {
-                        setVideoURI(videoUri)
-                        setOnPreparedListener { mp ->
-                            mp.isLooping = true
-                            start()
-                        }
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(16f / 9f)
-                    .background(Color.Black, RoundedCornerShape(8.dp))
-            )
-        } else {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(16f / 9f)
-                    .background(Color.Gray, RoundedCornerShape(8.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("未选择视频", color = Color.White)
-            }
-        }
-    }
-}
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun PreviewCompareScreen() {
-    CompareScreen(
+fun PreviewCompareScreenSlide() {
+    CompareScreenSlide(
         navController = rememberNavController(),
-        originalUri = null,   // 这里可以传测试 Uri
+        originalUri = null,
         processedUri = null
     )
 }
+
