@@ -1,0 +1,905 @@
+--------- beginning of main
+11-01 15:21:48.023  1681  1691 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_adsp
+11-01 15:21:48.023  1681  1690 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_apps
+--------- beginning of kernel
+11-01 15:21:48.263     1     1 I init    : starting service 'vendor.qsap.mpamsvc'...
+11-01 15:21:48.273     1     1 I init    : ... started service 'vendor.qsap.mpamsvc' has pid 14538
+11-01 15:21:48.313 14538 14538 F qsap_mpamsvc: Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy'
+--------- beginning of crash
+11-01 15:21:48.313 14538 14538 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 14538 (qsap_mpamsvc), pid 14538 (qsap_mpamsvc)
+11-01 15:21:48.319 14542 14542 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdTombstoneProto
+11-01 15:21:48.319  1286  1286 I tombstoned: received crash request for pid 14538
+11-01 15:21:48.319 14542 14542 I crash_dump64: performing dump of process 14538 (target tid = 14538)
+11-01 15:21:48.329 14542 14542 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+11-01 15:21:48.329 14542 14542 F DEBUG   : Build fingerprint: 'qti/canoe/canoe:16/BQ2A.250525.001-BP2A.250605.031.A3/eng.lz3786:userdebug/test-keys'
+11-01 15:21:48.329 14542 14542 F DEBUG   : Revision: '0'
+11-01 15:21:48.329 14542 14542 F DEBUG   : ABI: 'arm64'
+11-01 15:21:48.329 14542 14542 F DEBUG   : Timestamp: 2025-11-01 15:21:48.320188486+0000
+11-01 15:21:48.329 14542 14542 F DEBUG   : Process uptime: 1s
+11-01 15:21:48.329 14542 14542 F DEBUG   : Cmdline: /vendor/bin/qsap_mpamsvc
+11-01 15:21:48.329 14542 14542 F DEBUG   : pid: 14538, tid: 14538, name: qsap_mpamsvc  >>> /vendor/bin/qsap_mpamsvc <<<
+11-01 15:21:48.329 14542 14542 F DEBUG   : uid: 1000
+11-01 15:21:48.329 14542 14542 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+11-01 15:21:48.329 14542 14542 F DEBUG   : pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+11-01 15:21:48.329 14542 14542 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+11-01 15:21:48.329 14542 14542 F DEBUG   : Abort message: 'Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy''
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x0  0000000000000000  x1  00000000000038ca  x2  0000000000000006  x3  0000007ff89f41d0
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x4  1f646b68651f7862  x5  1f646b68651f7862  x6  1f646b68651f7862  x7  0000000000000000
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x8  00000000000000f0  x9  a346855cb85e43e2  x10 000000ff00000020  x11 0000007ff89f4170
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x12 fffffffffffffffe  x13 b40000764a6093c0  x14 000004b1c2598815  x15 0000000034155555
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x16 00000077fab9d0f8  x17 00000077fab83dc0  x18 0000007801030000  x19 00000000000038ca
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x20 00000000000038ca  x21 00000000ffffffff  x22 b40000764a6093c0  x23 0000000000000058
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x24 0000007801e7af80  x25 0000000000000000  x26 0000000000000000  x27 0000000000000000
+11-01 15:21:48.329 14542 14542 F DEBUG   :     x28 0000000000000000  x29 0000007ff89f4250
+11-01 15:21:48.329 14542 14542 F DEBUG   :     lr  00000077fab1f268  sp  0000007ff89f41d0  pc  00000077fab1f28c  pst 0000000000001000
+11-01 15:21:48.329 14542 14542 F DEBUG   : 7 total frames
+11-01 15:21:48.329 14542 14542 F DEBUG   : backtrace:
+11-01 15:21:48.329 14542 14542 F DEBUG   :       #00 pc 000000000007128c  /apex/com.android.runtime/lib64/bionic/libc.so (abort+160) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:21:48.329 14542 14542 F DEBUG   :       #01 pc 0000000000009744  /system/lib64/liblog.so (__android_log_default_aborter+16) (BuildId: 2c18db3b241c43dd6eeea76c3aef9f0d)
+11-01 15:21:48.329 14542 14542 F DEBUG   :       #02 pc 000000000009b6e8  /vendor/lib64/libbinder.so (android::base::LogMessage::~LogMessage()+548) (BuildId: c254d5bd9b9fed80250c5ca9fc4dfc3e)
+11-01 15:21:48.329 14542 14542 F DEBUG   :       #03 pc 0000000000004d90  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijailList(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) (.cfi)+1048) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:21:48.329 14542 14542 F DEBUG   :       #04 pc 000000000000490c  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijail(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) (.cfi)+160) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:21:48.329 14542 14542 F DEBUG   :       #05 pc 000000000002bb10  /vendor/bin/qsap_mpamsvc (main.cfi+96) (BuildId: 3dd503e413b9033ec12e5b23bf618315)
+11-01 15:21:48.329 14542 14542 F DEBUG   :       #06 pc 000000000006a6f8  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+124) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:21:48.299   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14542 n tail=500 logMask=8 pid=14538 start=0ns deadline=0ns
+11-01 15:21:48.299   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14542 n tail=500 logMask=1 pid=14538 start=0ns deadline=0ns
+--------- beginning of system
+11-01 15:21:48.331  2770  3586 W NativeCrashListener: Couldn't find ProcessRecord for pid 14538
+11-01 15:21:48.331  1286  1286 E tombstoned: Tombstone written to: tombstone_33
+11-01 15:21:48.332  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:21:48.332  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:21:48.302     1     1 I init    : Service 'vendor.qsap.mpamsvc' (pid 14538) received signal 6
+11-01 15:21:48.302     1     1 I init    : Sending signal 9 to service 'vendor.qsap.mpamsvc' (pid 14538) process group...
+11-01 15:21:48.303     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1000/pid_14538
+11-01 15:21:48.303     1     1 E init    : process with updatable components 'vendor.qsap.mpamsvc' exited 4 times in 4 minutes
+11-01 15:21:48.303     1     1 I init    : Untracked pid 14545 exited with status 0
+11-01 15:21:48.303     1     1 I init    : Untracked pid 14545 did not have an associated service entry and will not be reaped
+11-01 15:21:48.303     1     1 I init    : Untracked pid 14542 exited with status 0
+11-01 15:21:48.303     1     1 I init    : Untracked pid 14542 did not have an associated service entry and will not be reaped
+11-01 15:21:48.339 14548 14548 I flags_health_check: ServerConfigurableFlagsReset reset_mode value: 1
+11-01 15:21:48.339 14548 14548 I flags_health_check: ServerConfigurableFlagsReset updatable crashing detected, resetting flags.
+11-01 15:21:48.335 14548 14548 I flags_health_ch: type=1400 audit(0.0:7827519): avc:  denied  { getattr } for  path="/dev/__properties__/u:object_r:aac_drc_prop:s0" dev="tmpfs" ino=90 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:aac_drc_prop:s0 tclass=file permissive=1
+11-01 15:21:48.335 14548 14548 I flags_health_ch: type=1400 audit(0.0:7827520): avc:  denied  { map } for  path="/dev/__properties__/u:object_r:aac_drc_prop:s0" dev="tmpfs" ino=90 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:aac_drc_prop:s0 tclass=file permissive=1
+11-01 15:21:48.335 14548 14548 I flags_health_ch: type=1400 audit(0.0:7827521): avc:  denied  { open } for  path="/dev/__properties__/u:object_r:ab_update_gki_prop:s0" dev="tmpfs" ino=92 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:ab_update_gki_prop:s0 tclass=file permissive=1
+11-01 15:21:48.335 14548 14548 I flags_health_ch: type=1400 audit(0.0:7827522): avc:  denied  { getattr } for  path="/dev/__properties__/u:object_r:ab_update_gki_prop:s0" dev="tmpfs" ino=92 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:ab_update_gki_prop:s0 tclass=file permissive=1
+11-01 15:21:48.310 14548 14548 W audit   : audit_lost=7777886 audit_rate_limit=5 audit_backlog_limit=64
+11-01 15:21:48.310 14548 14548 E audit   : rate limit exceeded
+11-01 15:21:48.798   977   977 E         : failed to write the device
+11-01 15:21:48.798   977   977 E         : page write error, pg_num: 0x0
+11-01 15:21:53.026  1681  1691 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_adsp
+11-01 15:21:53.026  1681  1690 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_apps
+11-01 15:21:53.274     1     1 I init    : starting service 'vendor.qsap.mpamsvc'...
+11-01 15:21:53.281     1     1 I init    : ... started service 'vendor.qsap.mpamsvc' has pid 14549
+11-01 15:21:53.322 14549 14549 F qsap_mpamsvc: Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy'
+11-01 15:21:53.322 14549 14549 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 14549 (qsap_mpamsvc), pid 14549 (qsap_mpamsvc)
+11-01 15:21:53.328 14552 14552 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdTombstoneProto
+11-01 15:21:53.328  1286  1286 I tombstoned: received crash request for pid 14549
+11-01 15:21:53.328 14552 14552 I crash_dump64: performing dump of process 14549 (target tid = 14549)
+11-01 15:21:53.308   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14552 n tail=500 logMask=8 pid=14549 start=0ns deadline=0ns
+11-01 15:21:53.308   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14552 n tail=500 logMask=1 pid=14549 start=0ns deadline=0ns
+11-01 15:21:53.338 14552 14552 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+11-01 15:21:53.338 14552 14552 F DEBUG   : Build fingerprint: 'qti/canoe/canoe:16/BQ2A.250525.001-BP2A.250605.031.A3/eng.lz3786:userdebug/test-keys'
+11-01 15:21:53.338 14552 14552 F DEBUG   : Revision: '0'
+11-01 15:21:53.338 14552 14552 F DEBUG   : ABI: 'arm64'
+11-01 15:21:53.338 14552 14552 F DEBUG   : Timestamp: 2025-11-01 15:21:53.329239369+0000
+11-01 15:21:53.338 14552 14552 F DEBUG   : Process uptime: 1s
+11-01 15:21:53.338 14552 14552 F DEBUG   : Cmdline: /vendor/bin/qsap_mpamsvc
+11-01 15:21:53.338 14552 14552 F DEBUG   : pid: 14549, tid: 14549, name: qsap_mpamsvc  >>> /vendor/bin/qsap_mpamsvc <<<
+11-01 15:21:53.338 14552 14552 F DEBUG   : uid: 1000
+11-01 15:21:53.338 14552 14552 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+11-01 15:21:53.338 14552 14552 F DEBUG   : pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+11-01 15:21:53.338 14552 14552 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+11-01 15:21:53.338 14552 14552 F DEBUG   : Abort message: 'Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy''
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x0  0000000000000000  x1  00000000000038d5  x2  0000000000000006  x3  0000007fcecc34d0
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x4  1f646b68651f7862  x5  1f646b68651f7862  x6  1f646b68651f7862  x7  0000000000000000
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x8  00000000000000f0  x9  6e89f712a3185e94  x10 000000ff00000020  x11 0000007fcecc3470
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x12 fffffffffffffffe  x13 b400006ece80b580  x14 000004b1c814fe0b  x15 0000000034155555
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x16 0000007081da90f8  x17 0000007081d8fdc0  x18 0000007084070000  x19 00000000000038d5
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x20 00000000000038d5  x21 00000000ffffffff  x22 b400006ece80b580  x23 0000000000000058
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x24 0000007083456f80  x25 0000000000000000  x26 0000000000000000  x27 0000000000000000
+11-01 15:21:53.338 14552 14552 F DEBUG   :     x28 0000000000000000  x29 0000007fcecc3550
+11-01 15:21:53.338 14552 14552 F DEBUG   :     lr  0000007081d2b268  sp  0000007fcecc34d0  pc  0000007081d2b28c  pst 0000000000001000
+11-01 15:21:53.338 14552 14552 F DEBUG   : 7 total frames
+11-01 15:21:53.338 14552 14552 F DEBUG   : backtrace:
+11-01 15:21:53.338 14552 14552 F DEBUG   :       #00 pc 000000000007128c  /apex/com.android.runtime/lib64/bionic/libc.so (abort+160) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:21:53.338 14552 14552 F DEBUG   :       #01 pc 0000000000009744  /system/lib64/liblog.so (__android_log_default_aborter+16) (BuildId: 2c18db3b241c43dd6eeea76c3aef9f0d)
+11-01 15:21:53.338 14552 14552 F DEBUG   :       #02 pc 000000000009b6e8  /vendor/lib64/libbinder.so (android::base::LogMessage::~LogMessage()+548) (BuildId: c254d5bd9b9fed80250c5ca9fc4dfc3e)
+11-01 15:21:53.338 14552 14552 F DEBUG   :       #03 pc 0000000000004d90  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijailList(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) (.cfi)+1048) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:21:53.338 14552 14552 F DEBUG   :       #04 pc 000000000000490c  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijail(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) (.cfi)+160) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:21:53.338 14552 14552 F DEBUG   :       #05 pc 000000000002bb10  /vendor/bin/qsap_mpamsvc (main.cfi+96) (BuildId: 3dd503e413b9033ec12e5b23bf618315)
+11-01 15:21:53.338 14552 14552 F DEBUG   :       #06 pc 000000000006a6f8  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+124) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:21:53.339  2770  3586 W NativeCrashListener: Couldn't find ProcessRecord for pid 14549
+11-01 15:21:53.340  1286  1286 E tombstoned: Tombstone written to: tombstone_34
+11-01 15:21:53.341  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:21:53.341  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:21:53.311     1     1 I init    : Service 'vendor.qsap.mpamsvc' (pid 14549) received signal 6
+11-01 15:21:53.311     1     1 I init    : Sending signal 9 to service 'vendor.qsap.mpamsvc' (pid 14549) process group...
+11-01 15:21:53.312     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1000/pid_14549
+11-01 15:21:53.312     1     1 E init    : process with updatable components 'vendor.qsap.mpamsvc' exited 4 times in 4 minutes
+11-01 15:21:53.312     1     1 I init    : Untracked pid 14554 received signal 9
+11-01 15:21:53.312     1     1 I init    : Untracked pid 14554 did not have an associated service entry and will not be reaped
+11-01 15:21:53.312     1     1 I init    : Untracked pid 14552 exited with status 0
+11-01 15:21:53.312     1     1 I init    : Untracked pid 14552 did not have an associated service entry and will not be reaped
+11-01 15:21:53.343 14557 14557 I flags_health_ch: type=1400 audit(0.0:7828521): avc:  denied  { open } for  path="/dev/__properties__/u:object_r:aac_drc_prop:s0" dev="tmpfs" ino=90 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:aac_drc_prop:s0 tclass=file permissive=1
+11-01 15:21:53.349 14557 14557 I flags_health_check: ServerConfigurableFlagsReset updatable crashing detected, resetting flags.
+11-01 15:21:53.343 14557 14557 I flags_health_ch: type=1400 audit(0.0:7828522): avc:  denied  { getattr } for  path="/dev/__properties__/u:object_r:aac_drc_prop:s0" dev="tmpfs" ino=90 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:aac_drc_prop:s0 tclass=file permissive=1
+11-01 15:21:53.320 14557 14557 W audit   : audit_lost=7778884 audit_rate_limit=5 audit_backlog_limit=64
+11-01 15:21:53.343 14557 14557 I flags_health_ch: type=1400 audit(0.0:7828523): avc:  denied  { map } for  path="/dev/__properties__/u:object_r:aac_drc_prop:s0" dev="tmpfs" ino=90 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:aac_drc_prop:s0 tclass=file permissive=1
+11-01 15:21:53.320 14557 14557 E audit   : rate limit exceeded
+11-01 15:21:53.343 14557 14557 I flags_health_ch: type=1400 audit(0.0:7828524): avc:  denied  { open } for  path="/dev/__properties__/u:object_r:ab_update_gki_prop:s0" dev="tmpfs" ino=92 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:ab_update_gki_prop:s0 tclass=file permissive=1
+11-01 15:21:53.343 14557 14557 I flags_health_ch: type=1400 audit(0.0:7828525): avc:  denied  { getattr } for  path="/dev/__properties__/u:object_r:ab_update_gki_prop:s0" dev="tmpfs" ino=92 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:ab_update_gki_prop:s0 tclass=file permissive=1
+11-01 15:21:53.504   928   928 I logd    : logdr: UID=0 GID=0 PID=14558 b tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+11-01 15:21:58.029  1681  1690 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_apps
+11-01 15:21:58.030  1681  1691 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_adsp
+11-01 15:21:58.284     1     1 I init    : starting service 'vendor.qsap.mpamsvc'...
+11-01 15:21:58.291     1     1 I init    : ... started service 'vendor.qsap.mpamsvc' has pid 14561
+11-01 15:21:58.332 14561 14561 F qsap_mpamsvc: Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy'
+11-01 15:21:58.332 14561 14561 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 14561 (qsap_mpamsvc), pid 14561 (qsap_mpamsvc)
+11-01 15:21:58.338 14564 14564 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdTombstoneProto
+11-01 15:21:58.338  1286  1286 I tombstoned: received crash request for pid 14561
+11-01 15:21:58.339 14564 14564 I crash_dump64: performing dump of process 14561 (target tid = 14561)
+11-01 15:21:58.346 14564 14564 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+11-01 15:21:58.346 14564 14564 F DEBUG   : Build fingerprint: 'qti/canoe/canoe:16/BQ2A.250525.001-BP2A.250605.031.A3/eng.lz3786:userdebug/test-keys'
+11-01 15:21:58.346 14564 14564 F DEBUG   : Revision: '0'
+11-01 15:21:58.346 14564 14564 F DEBUG   : ABI: 'arm64'
+11-01 15:21:58.346 14564 14564 F DEBUG   : Timestamp: 2025-11-01 15:21:58.339485461+0000
+11-01 15:21:58.346 14564 14564 F DEBUG   : Process uptime: 1s
+11-01 15:21:58.346 14564 14564 F DEBUG   : Cmdline: /vendor/bin/qsap_mpamsvc
+11-01 15:21:58.346 14564 14564 F DEBUG   : pid: 14561, tid: 14561, name: qsap_mpamsvc  >>> /vendor/bin/qsap_mpamsvc <<<
+11-01 15:21:58.346 14564 14564 F DEBUG   : uid: 1000
+11-01 15:21:58.346 14564 14564 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+11-01 15:21:58.346 14564 14564 F DEBUG   : pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+11-01 15:21:58.346 14564 14564 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+11-01 15:21:58.346 14564 14564 F DEBUG   : Abort message: 'Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy''
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x0  0000000000000000  x1  00000000000038e1  x2  0000000000000006  x3  0000007ff5c0e760
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x4  1f646b68651f7862  x5  1f646b68651f7862  x6  1f646b68651f7862  x7  0000000000000000
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x8  00000000000000f0  x9  e5d397e5087edd2d  x10 000000ff00000020  x11 0000007ff5c0e700
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x12 fffffffffffffffe  x13 b400006fcf8055f0  x14 000004b1cdd0ba52  x15 0000000034155555
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x16 00000071c43030f8  x17 00000071c42e9dc0  x18 00000071c4ab0000  x19 00000000000038e1
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x20 00000000000038e1  x21 00000000ffffffff  x22 b400006fcf8055f0  x23 0000000000000058
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x24 00000071c45d4f80  x25 0000000000000000  x26 0000000000000000  x27 0000000000000000
+11-01 15:21:58.346 14564 14564 F DEBUG   :     x28 0000000000000000  x29 0000007ff5c0e7e0
+11-01 15:21:58.346 14564 14564 F DEBUG   :     lr  00000071c4285268  sp  0000007ff5c0e760  pc  00000071c428528c  pst 0000000000001000
+11-01 15:21:58.346 14564 14564 F DEBUG   : 7 total frames
+11-01 15:21:58.346 14564 14564 F DEBUG   : backtrace:
+11-01 15:21:58.346 14564 14564 F DEBUG   :       #00 pc 000000000007128c  /apex/com.android.runtime/lib64/bionic/libc.so (abort+160) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:21:58.346 14564 14564 F DEBUG   :       #01 pc 0000000000009744  /system/lib64/liblog.so (__android_log_default_aborter+16) (BuildId: 2c18db3b241c43dd6eeea76c3aef9f0d)
+11-01 15:21:58.346 14564 14564 F DEBUG   :       #02 pc 000000000009b6e8  /vendor/lib64/libbinder.so (android::base::LogMessage::~LogMessage()+548) (BuildId: c254d5bd9b9fed80250c5ca9fc4dfc3e)
+11-01 15:21:58.346 14564 14564 F DEBUG   :       #03 pc 0000000000004d90  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijailList(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) (.cfi)+1048) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:21:58.346 14564 14564 F DEBUG   :       #04 pc 000000000000490c  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijail(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) (.cfi)+160) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:21:58.346 14564 14564 F DEBUG   :       #05 pc 000000000002bb10  /vendor/bin/qsap_mpamsvc (main.cfi+96) (BuildId: 3dd503e413b9033ec12e5b23bf618315)
+11-01 15:21:58.346 14564 14564 F DEBUG   :       #06 pc 000000000006a6f8  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+124) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:21:58.347  2770  3586 W NativeCrashListener: Couldn't find ProcessRecord for pid 14561
+11-01 15:21:58.348  1286  1286 E tombstoned: Tombstone written to: tombstone_35
+11-01 15:21:58.349  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:21:58.349  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:21:58.316   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14564 n tail=500 logMask=8 pid=14561 start=0ns deadline=0ns
+11-01 15:21:58.317   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14564 n tail=500 logMask=1 pid=14561 start=0ns deadline=0ns
+11-01 15:21:58.319     1     1 I init    : Service 'vendor.qsap.mpamsvc' (pid 14561) received signal 6
+11-01 15:21:58.319     1     1 I init    : Sending signal 9 to service 'vendor.qsap.mpamsvc' (pid 14561) process group...
+11-01 15:21:58.320     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1000/pid_14561
+11-01 15:21:58.320     1     1 I init    : Untracked pid 14566 received signal 9
+11-01 15:21:58.320     1     1 I init    : Untracked pid 14566 did not have an associated service entry and will not be reaped
+11-01 15:21:58.320     1     1 I init    : Untracked pid 14564 exited with status 0
+11-01 15:21:58.320     1     1 I init    : Untracked pid 14564 did not have an associated service entry and will not be reaped
+11-01 15:22:00.109  1785  2039 I SDM     : DisplayBase::CommitThread: Received Idle Timeout, panel: cmd, timeout: 70000 us
+11-01 15:22:01.201   928   928 I logd    : logdr: UID=0 GID=0 PID=14570 b tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+11-01 15:22:03.033  1681  1691 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_adsp
+11-01 15:22:03.033  1681  1690 E Diag-Router: diag: glinkpkt_open: failed to create control node for slate_apps
+11-01 15:22:03.294     1     1 I init    : starting service 'vendor.qsap.mpamsvc'...
+11-01 15:22:03.301     1     1 I init    : ... started service 'vendor.qsap.mpamsvc' has pid 14573
+11-01 15:22:03.342 14573 14573 F qsap_mpamsvc: Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy'
+11-01 15:22:03.342 14573 14573 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 14573 (qsap_mpamsvc), pid 14573 (qsap_mpamsvc)
+11-01 15:22:03.348 14576 14576 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdTombstoneProto
+11-01 15:22:03.348  1286  1286 I tombstoned: received crash request for pid 14573
+11-01 15:22:03.348 14576 14576 I crash_dump64: performing dump of process 14573 (target tid = 14573)
+11-01 15:22:03.328   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14576 n tail=500 logMask=8 pid=14573 start=0ns deadline=0ns
+11-01 15:22:03.328   928   928 I logd    : logdr: UID=1000 GID=1000 PID=14576 n tail=500 logMask=1 pid=14573 start=0ns deadline=0ns
+11-01 15:22:03.358 14576 14576 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+11-01 15:22:03.358 14576 14576 F DEBUG   : Build fingerprint: 'qti/canoe/canoe:16/BQ2A.250525.001-BP2A.250605.031.A3/eng.lz3786:userdebug/test-keys'
+11-01 15:22:03.358 14576 14576 F DEBUG   : Revision: '0'
+11-01 15:22:03.358 14576 14576 F DEBUG   : ABI: 'arm64'
+11-01 15:22:03.358 14576 14576 F DEBUG   : Timestamp: 2025-11-01 15:22:03.349168063+0000
+11-01 15:22:03.358 14576 14576 F DEBUG   : Process uptime: 1s
+11-01 15:22:03.358 14576 14576 F DEBUG   : Cmdline: /vendor/bin/qsap_mpamsvc
+11-01 15:22:03.358 14576 14576 F DEBUG   : pid: 14573, tid: 14573, name: qsap_mpamsvc  >>> /vendor/bin/qsap_mpamsvc <<<
+11-01 15:22:03.358 14576 14576 F DEBUG   : uid: 1000
+11-01 15:22:03.358 14576 14576 F DEBUG   : tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+11-01 15:22:03.358 14576 14576 F DEBUG   : pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+11-01 15:22:03.358 14576 14576 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
+11-01 15:22:03.358 14576 14576 F DEBUG   : Abort message: 'Could not read base policy file '/vendor/etc/seccomp_policy/qsap_mpamsvc.policy''
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x0  0000000000000000  x1  00000000000038ed  x2  0000000000000006  x3  0000007ff4c79110
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x4  1f646b68651f7862  x5  1f646b68651f7862  x6  1f646b68651f7862  x7  0000000000000000
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x8  00000000000000f0  x9  69fe5d444a8dcea6  x10 000000ff00000020  x11 0000007ff4c790b0
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x12 fffffffffffffffe  x13 b400007b0c20f0f0  x14 000004b1d38c8c61  x15 0000000034155555
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x16 0000007ccc7c10f8  x17 0000007ccc7a7dc0  x18 0000007ccd7a0000  x19 00000000000038ed
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x20 00000000000038ed  x21 00000000ffffffff  x22 b400007b0c20f0f0  x23 0000000000000058
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x24 0000007cce042f80  x25 0000000000000000  x26 0000000000000000  x27 0000000000000000
+11-01 15:22:03.358 14576 14576 F DEBUG   :     x28 0000000000000000  x29 0000007ff4c79190
+11-01 15:22:03.358 14576 14576 F DEBUG   :     lr  0000007ccc743268  sp  0000007ff4c79110  pc  0000007ccc74328c  pst 0000000000001000
+11-01 15:22:03.358 14576 14576 F DEBUG   : 7 total frames
+11-01 15:22:03.358 14576 14576 F DEBUG   : backtrace:
+11-01 15:22:03.358 14576 14576 F DEBUG   :       #00 pc 000000000007128c  /apex/com.android.runtime/lib64/bionic/libc.so (abort+160) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:22:03.358 14576 14576 F DEBUG   :       #01 pc 0000000000009744  /system/lib64/liblog.so (__android_log_default_aborter+16) (BuildId: 2c18db3b241c43dd6eeea76c3aef9f0d)
+11-01 15:22:03.358 14576 14576 F DEBUG   :       #02 pc 000000000009b6e8  /vendor/lib64/libbinder.so (android::base::LogMessage::~LogMessage()+548) (BuildId: c254d5bd9b9fed80250c5ca9fc4dfc3e)
+11-01 15:22:03.358 14576 14576 F DEBUG   :       #03 pc 0000000000004d90  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijailList(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>, std::__1::allocator<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>>> const&) (.cfi)+1048) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:22:03.358 14576 14576 F DEBUG   :       #04 pc 000000000000490c  /vendor/lib64/libavservices_minijail.so (android::SetUpMinijail(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> const&) (.cfi)+160) (BuildId: e25036a4f698e884d1c075f0842ace7a)
+11-01 15:22:03.358 14576 14576 F DEBUG   :       #05 pc 000000000002bb10  /vendor/bin/qsap_mpamsvc (main.cfi+96) (BuildId: 3dd503e413b9033ec12e5b23bf618315)
+11-01 15:22:03.358 14576 14576 F DEBUG   :       #06 pc 000000000006a6f8  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+124) (BuildId: 85a1677149dd58c9bc79f641cb77adea)
+11-01 15:22:03.359  2770  3586 W NativeCrashListener: Couldn't find ProcessRecord for pid 14573
+11-01 15:22:03.360  1286  1286 E tombstoned: Tombstone written to: tombstone_36
+11-01 15:22:03.360  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:22:03.361  2770  3390 E NativeTombstoneManager: Tombstone's UID (1000) not an app, ignoring
+11-01 15:22:03.331     1     1 I init    : Service 'vendor.qsap.mpamsvc' (pid 14573) received signal 6
+11-01 15:22:03.331     1     1 I init    : Sending signal 9 to service 'vendor.qsap.mpamsvc' (pid 14573) process group...
+11-01 15:22:03.332     1     1 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1000/pid_14573
+11-01 15:22:03.332     1     1 I init    : Untracked pid 14578 received signal 9
+11-01 15:22:03.332     1     1 I init    : Untracked pid 14578 did not have an associated service entry and will not be reaped
+11-01 15:22:03.332     1     1 I init    : Untracked pid 14576 exited with status 0
+11-01 15:22:03.332     1     1 I init    : Untracked pid 14576 did not have an associated service entry and will not be reaped
+11-01 15:22:03.661  4009  4009 D TaskbarManager: dispatchTouchEvent:  displayId=0 isDefaultDisplay=true
+11-01 15:22:03.692  1788  1788 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:03.692  1788  1788 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:03.692  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:03.692  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:03.697  4009  4009 D StatsLog: LAUNCHER_ALLAPPS_ENTRY_WITH_DEVICE_SEARCH
+11-01 15:22:03.697  4009  4009 D StateManager: onStateTransitionStart - state: AllApps
+11-01 15:22:03.698  3566  3633 D WindowManagerShell: setLauncherKeepClearAreaHeight: visible=false, height=392
+11-01 15:22:03.698  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:03.700  1792  1792 D vendor.qti.vibratorOL: Vibrator perform effect 0
+11-01 15:22:03.702  1792 14586 D vendor.qti.vibratorOL: Starting perform on another thread
+11-01 15:22:03.709  1846  1846 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher#3136 parentId=89} producedId=54 frameNumber=46 -> producedId=54 frameNumber=45
+11-01 15:22:03.712  1788  1963 E PERFHAL-UTIL: PERFHAL-UTIL: save_node_val() 266: Failed to read /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+11-01 15:22:03.712  1788  1963 E PERFHAL-OPTSHANDLER: PERFHAL-OPTSHANDLER: modify_sysfsnode() 1204: Failed to read /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+11-01 15:22:03.712  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: AddAndApply() 159: Failed to apply optimization [10, 3]
+11-01 15:22:03.732  1792 14586 D vendor.qti.vibratorOL: Notifying perform complete
+11-01 15:22:03.732  1792  1792 D vendor.qti.vibratorOL: QTI Vibrator off
+11-01 15:22:03.745  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:03.755  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.755  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.755  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.755  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.755  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.756  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.756  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.756  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.756  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.756  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.756  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.757  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.758  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.758  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.758  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.758  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.758  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.758  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.759  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.760  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.760  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.760  4009  4009 D BaseAllAppsAdapter: onBindViewHolder: isPrivateSpaceItem: false isStateTransitioning: false isScrolling: false readyToAnimate: false currentState: 0 currentAlpha: 1.0
+11-01 15:22:03.766  4009  4009 D StateManager: onStateTransitionStart - state: AllApps
+11-01 15:22:03.766  1788  1992 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:03.766  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:03.767  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:03.767  1788  1788 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:03.879  4009  4009 D StateManager: onStateTransitionEnd - state: AllApps
+11-01 15:22:03.879  4009  4009 D RecentsView: reset - mEnableDrawingLiveTile: false, mRecentsAnimationController: null
+11-01 15:22:03.879  4009  4009 D StatsLog: LAUNCHER_ALLAPPS_OPEN_UP
+11-01 15:22:03.881  4009  4009 D OverviewActionsView: updateForGroupedTask() called with: isGroupedTask = [false], canSaveAppPair = [false]
+11-01 15:22:03.881  4009  4009 D OverviewActionsView: updateActionButtonsVisibility() called: showSingleTaskActions = [true], showGroupActions = [false]
+11-01 15:22:03.899   977   977 E         : failed to write the device
+11-01 15:22:03.899   977   977 E         : page write error, pg_num: 0x0
+11-01 15:22:03.940  4009  4009 W FrameTracker: Missed SF frame:JANK_COMPOSER, 859133, 13468451, CUJ=J<LAUNCHER_OPEN_ALL_APPS::swipe>
+11-01 15:22:04.140  1846  1846 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-01 15:22:04.213  1785  2039 I SDM     : DisplayBase::CommitThread: Received Idle Timeout, panel: cmd, timeout: 69999 us
+11-01 15:22:04.309  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 32]
+11-01 15:22:04.309  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 31]
+11-01 15:22:04.309  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 30]
+11-01 15:22:04.309  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 29]
+11-01 15:22:04.356  4009  4009 D TaskbarManager: dispatchTouchEvent:  displayId=0 isDefaultDisplay=true
+11-01 15:22:04.438  1788  1788 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:04.439  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:04.439  1788  1788 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:04.439  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:04.493  1788  1992 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:04.493  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:04.493  1788  1992 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:04.534  4009  4009 D StatsLog: LAUNCHER_ALLAPPS_PERSONAL_SCROLLED_DOWN
+11-01 15:22:05.009  1785  2039 I SDM     : DisplayBase::CommitThread: Received Idle Timeout, panel: cmd, timeout: 70000 us
+11-01 15:22:05.099  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 32]
+11-01 15:22:05.099  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 31]
+11-01 15:22:05.099  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 30]
+11-01 15:22:05.099  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [15, 29]
+11-01 15:22:05.671  4009  4009 D TaskbarManager: dispatchTouchEvent:  displayId=0 isDefaultDisplay=true
+11-01 15:22:05.760  4009  4059 I droid.launcher3: AssetManager2(0xb400006ee3226f98) locale list changing from [] to [en-US]
+11-01 15:22:05.761  2770  2788 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:05.762  2770  2788 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:05.762  2770  2788 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:05.762  2770  2788 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:05.762  2770  2788 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:05.762  2770  2788 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:05.762  2770  2788 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10187, packageName = null, attributionTag = null, token = android.os.Binder@100e795, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-01 15:22:05.762  2770  2787 W AS.PlaybackActivityMon: No piid assigned for invalid/internal port id 73
+11-01 15:22:05.763  2770  2788 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+11-01 15:22:05.763  2770  2788 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+11-01 15:22:05.765  1755  2998 D AHAL_StreamOut_QTI: start : usecase: LOW_LATENCY_PLAYBACK, mix port config id:57, IoHandle:13 
+11-01 15:22:05.765  1755  2998 E PERFHAL-CLIENT: PERFHAL-CLIENT: perf_lock_acq() 164: opcode=1077936128 isMvOpcode=0
+11-01 15:22:05.766  1755  2998 E PERFHAL-CLIENT: PERFHAL-CLIENT: perf_lock_acq() 164: opcode=1082130432 isMvOpcode=0
+11-01 15:22:05.766  1755  2998 I PAL: API: pal_stream_open: 259: Enter, stream type:1
+11-01 15:22:05.767  1755  2998 I PAL: SessionAR: SessionAR: 58: usecase manager xml parsing successful
+11-01 15:22:05.767  1755  2998 I PAL: Device: setDeviceAttributes: 283: DeviceAttributes for Device Id 3 updated
+11-01 15:22:05.767  1755  2998 I PAL: Device: open: 363: Enter. deviceCount 0 for device id 3 (PAL_DEVICE_OUT_SPEAKER)
+11-01 15:22:05.767  1755  2998 I PAL: Device: setMediaConfig: 1094: CODEC_DMA-LPAIF_WSA-RX-0 rate ch fmt data_fmt 48000 2 2 1
+11-01 15:22:05.767  1755  2998 D audio_route: Apply path: speaker-vbat
+11-01 15:22:05.768  2770  2788 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+11-01 15:22:05.768  2770  2788 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+11-01 15:22:05.768  2770  2788 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:05.768  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:05.768  2770  2788 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:05.768  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:05.768  2770  2788 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:05.768  1788  1974 E PERFHAL-CONFIG: PERFHAL-CONFIG: GetConfig() 508: Config TFPS undefined for this target
+11-01 15:22:05.769  1788  1974 E PERFHAL-CONFIG: PERFHAL-CONFIG: GetConfig() 508: Config S3TF undefined for this target
+11-01 15:22:05.769  1846  4021 D Dolphin.FeatureManager: mTargetFps = 0.000000
+11-01 15:22:05.769  1788  1974 E PERFHAL-CONFIG: PERFHAL-CONFIG: GetConfig() 508: Config TFPS undefined for this target
+11-01 15:22:05.769  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: sendEvents() 291: Start hint for app com.example.videoframeapp/com.example.videoframeapp.MainActivity/1, hintID : 4099, hintID hex : 1003 value: -1
+11-01 15:22:05.769  1755  2998 I PAL: Device: open: 405: Exit. deviceCount 1 for device id 3 (PAL_DEVICE_OUT_SPEAKER), exit status: 0
+11-01 15:22:05.769  1755  2998 I PAL: ResourceManager: allocateFrontEndIds: 5235: allocateFrontEndIds: front end 126
+11-01 15:22:05.769  2770  2788 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 xflg=0x4 cmp=com.example.videoframeapp/.MainActivity bnds=[288,2192][576,2612]} with LAUNCH_MULTIPLE from uid 10139 (sr=233078226) (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: populateStreamKV: 3051: stream type 1
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: getSelectorValues: 2867: Direction: 1
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: getSelectorValues: 2883: Instance: 1
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: findKVs: 2757: key: 0xa1000000 value: 0xa100000e
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: findKVs: 2757: key: 0xab000000 value: 0x1
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: populateDeviceKV: 3183: Enter device id:3
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: findKVs: 2770: key: 0xa2000000 value: 0xa2000001
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: populateDeviceKV: 3210: Exit device id:3, status 0
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: populateDevicePPKV: 3323: Rx device id:3
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: getSelectorValues: 2949: stream type: 1
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: findKVs: 2757: key: 0xa2000000 value: 0xa2000001
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: findKVs: 2757: key: 0xac000000 value: 0xac000002
+11-01 15:22:05.769  1755  2998 I PAL: PayloadBuilder: populateDevicePPCkv: 3491: SpeakerProt Status[0], RAS Status[0]
+11-01 15:22:05.769  1755  2998 I AGM: device: device_set_metadata: 708 Setting device metadata for CODEC_DMA-LPAIF_WSA-RX-0
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 79 *************************Metadata*************************
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 80 GKV size:1
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 83 key:0xa2000000, value:0xa2000001 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 87 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: CKV count:0
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 92 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 94 Property ID:134217744
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 95 property count:2
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 98 Property Values: 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 100 0x2 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 100 0x5 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 102 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 103 ****************Metadata Done***************************
+11-01 15:22:05.769  1755  2998 D AGM: metadata: 
+11-01 15:22:05.769  1755  2998 I AGM: session: session_obj_set_sess_aif_metadata: 1833 Setting metadata for sess_id 126, aif id 5
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 79 *************************Metadata*************************
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 80 GKV size:2
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 83 key:0xa2000000, value:0xa2000001 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 83 key:0xac000000, value:0xac000002 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 87 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: CKV count:1
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 90 key:0xd2000000, value:0x0 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 92 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 94 Property ID:134217744
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 95 property count:1
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 98 Property Values: 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 100 0x3 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 102 
+11-01 15:22:05.769  1755  2998 D AGM: metadata: metadata_print: 103 ****************Metadata Done***************************
+11-01 15:22:05.769  1755  2998 D AGM: metadata: 
+11-01 15:22:05.769  1755  2998 I AGM: session: session_obj_set_sess_aif_metadata: 1838 Exit
+11-01 15:22:05.769  1755  2998 I AgmIpc::Server: SessionInfo created for session 126
+11-01 15:22:05.769  1755  2998 I AGM: API: agm_session_aif_connect: 629 connecting aifid:5 with session id=126
+11-01 15:22:05.769  3566  3633 V WindowManagerShell: Transition requested (#293): android.os.BinderProxy@ffde5be TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=93 effectiveUid=10187 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.example.videoframeapp/.MainActivity } baseActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} topActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} origActivity=null realActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} numActivities=1 lastActiveTime=268835660 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@a0ee61f} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{d6f9d6c com.example.videoframeapp.MainActivity} launchCookies=[android.os.BinderProxy@8051f35] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(369, 838 - 1072, 2278) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1440, 3200) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} topActivityMainWindowFrame=null}, pipChange = null, remoteTransition = RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1ae9fca, appThread = android.app.IApplicationThread$Stub$Proxy@c45c53b, debugName = QuickstepLaunch }, displayChange = null, flags = 0, debugId = 293 }
+11-01 15:22:05.769  1755  2998 I PAL: STUtils: GetConcurrencyInfo: 920: stream type 1 Tx conc 0, Rx conc 0, concurrency allowed
+11-01 15:22:05.769  1755  2998 I PAL: API: pal_stream_open: 307: Exit. Value of stream_handle 0xb400006f3d20fa50K, status 0
+11-01 15:22:05.769  3566  3633 D ShellSplitScreen: logExit: no-op, mLoggerSessionId is null
+11-01 15:22:05.769  1755  2998 D AHAL_StreamOut_QTI: configure : usecase: LOW_LATENCY_PLAYBACK, mix port config id:57, IoHandle:13 set pal_stream_set_buffer_size to 768 with count 2
+11-01 15:22:05.769  1755  2998 E PERFHAL-CLIENT: PERFHAL-CLIENT: perf_lock_acq() 164: opcode=1077936128 isMvOpcode=0
+11-01 15:22:05.769  1755  2998 E PERFHAL-CLIENT: PERFHAL-CLIENT: perf_lock_acq() 164: opcode=1082130432 isMvOpcode=0
+11-01 15:22:05.769  3566  3633 V WindowManagerShell: RemoteTransition directly requested for (#293) android.os.BinderProxy@ffde5be: RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1ae9fca, appThread = android.app.IApplicationThread$Stub$Proxy@c45c53b, debugName = QuickstepLaunch }
+11-01 15:22:05.769  3566  3633 V WindowManagerShell: Transition (#293): request handled by DefaultMixedHandler
+11-01 15:22:05.769  1755  2998 I PAL: API: pal_stream_start: 384: Enter. Stream handle 0xb400006f3d20fa50K
+11-01 15:22:05.769  4009  4009 D StatsLog: LAUNCHER_APP_LAUNCH_TAP
+11-01 15:22:05.769  1755  2998 I PAL: Device: setMediaConfig: 1094: CODEC_DMA-LPAIF_WSA-RX-0 rate ch fmt data_fmt 48000 2 2 1
+11-01 15:22:05.769  1755  2998 I PAL: ResourceManager: voteSleepMonitor: 1951: Voting done for nlpi use case, lpi votes 0, nlpi votes : 1
+11-01 15:22:05.769  4009  4009 W SplitSelectStateCtor: Missing session instanceIds
+11-01 15:22:05.769  4009  4009 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-01 15:22:05.769  2770  2801 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10187, packageName = null, attributionTag = null, token = android.os.Binder@100e795, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-01 15:22:05.740  2998  2998 I adsp_sleepmon: Audio: num_sessions=1,num_lpi_sessions=0,timer_pending=0
+11-01 15:22:05.770  2770  3506 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:05.770  2770  3506 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:05.770  2770  3506 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:05.770  1755  2998 D AGM: graph: graph_open: 551 entry
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 79 *************************Metadata*************************
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 80 GKV size:4
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 83 key:0xa1000000, value:0xa100000e 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 83 key:0xab000000, value:0x1 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 83 key:0xa2000000, value:0xa2000001 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 83 key:0xac000000, value:0xac000002 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 87 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: CKV count:2
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 90 key:0xa4000000, value:0xf 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 90 key:0xd2000000, value:0x0 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 92 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 94 Property ID:134217744
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 95 property count:4
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 98 Property Values: 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 100 0x1 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 100 0x3 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 100 0x2 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 100 0x5 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 102 
+11-01 15:22:05.770  1755  2998 D AGM: metadata: metadata_print: 103 ****************Metadata Done***************************
+11-01 15:22:05.770  1755  2998 D AGM: metadata: 
+11-01 15:22:05.770  1755  2998 D AGM: graph: print_graph_alias: 2346 GKV Alias 569 | StreamRX_PCM_LL_Playback_DeviceRX_Speaker_Instance_Instance_1_DevicePP_Rx_Audio_MBDRC
+11-01 15:22:05.770  1755  2998 D AGM: graph: graph_open: 631 miid 40bd mid 7001000 tag c0000002
+11-01 15:22:05.770  1755  2998 D AGM: graph: graph_open: 679 miid 4023 mid 7001023 tag c0000004
+11-01 15:22:05.770  1755  2998 D AGM: graph: graph_open: 631 miid 40c4 mid 7001019 tag c0000006
+11-01 15:22:05.770  1755  2998 D AGM: graph: graph_open: 631 miid 40bf mid 7001005 tag c000000e
+11-01 15:22:05.770  1755  2998 D AGM: graph: graph_open: 631 miid 40c0 mid 7001003 tag c0000010
+11-01 15:22:05.770  1755  2998 D AGM: graph: graph_open: 631 miid 4165 mid 7001032 tag c0000013
+11-01 15:22:05.770  1755  2998 I GPR:    : vendor/qcom/opensource/args/gpr/core/src/gpr_drv.c:__gpr_cmd_register_v2:931 GPR Register: Source Port is 8209 heap_index: 0
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: PowerAppClassifier: getAppType() 59: checking app [com.example.videoframeapp] is type 1
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: isGame() 558: com.example.videoframeapp is Game = 1
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: sendEvents() 291: Start hint for app com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher/36, hintID : 4100, hintID hex : 1004 value: -1
+11-01 15:22:05.770  1788  1788 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: PowerAppClassifier: getAppType() 59: checking app [com.android.launcher3] is type 0
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: isGame() 558: com.android.launcher3 is Game = 0
+11-01 15:22:05.770  2770  2801 I ActivityManager: PendingStartActivityUids startActivity to updateOomAdj delay:24035ms, uid:10139
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: sendEvents() 291: Start hint for app com.example.videoframeapp/com.example.videoframeapp.MainActivity/1, hintID : 4099, hintID hex : 1003 value: -1
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: PowerAppClassifier: getAppType() 59: checking app [com.example.videoframeapp] is type 1
+11-01 15:22:05.770  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: isGame() 558: com.example.videoframeapp is Game = 1
+11-01 15:22:05.770  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:05.768  3687  3811 I DynamicDDSService: handleMessage(ACTIVITY_INVOKE{appInfo=com.example.videoframeapp isFullScreen=}true)
+11-01 15:22:05.770  2770  3506 I AppsFilter: interaction: PackageSetting{2b374a0 com.android.microdroid.empty_payload/10174} -> PackageSetting{78c431 com.example.videoframeapp/10187} BLOCKED
+11-01 15:22:05.770  3687  5371 W DynamicDDSService: appName is running in background.com.android.launcher3
+11-01 15:22:05.770  1605  1651 I netd    : tetherGetStats() -> {[]} <0.51ms>
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: AddAndApply() 136: Resource value ffffffff is not supported
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.771  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for ./spv5_module.so.1 with       fopen:7us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for ./spv5_module.so.1 with       fopen:2us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib64/rfs/dsp/adsp/./spv5_module.so.1 with       fopen:13us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib64/rfs/dsp/./spv5_module.so.1 with       fopen:3us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/adsp/adsp/./spv5_module.so.1 with       fopen:14us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/adsp/./spv5_module.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/dsp/adsp/./spv5_module.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/dsp/./spv5_module.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  4006 D CompatChangeReporter: Compat change id reported: 377864165; UID 10187; state: ENABLED
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/dsp/adsp/./spv5_module.so.1 with       fopen:13us, fstat:1us, read:30us,       rpc_alloc:28us, mmap:339us fd 0xd error_code 0x0
+11-01 15:22:05.772   531  1939 I audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:1205: Successfully opened file /vendor/dsp/adsp/./spv5_module.so.1
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for ./CFCM.so.1 with       fopen:5us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for ./CFCM.so.1 with       fopen:2us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib64/rfs/dsp/adsp/./CFCM.so.1 with       fopen:5us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib64/rfs/dsp/./CFCM.so.1 with       fopen:2us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/adsp/adsp/./CFCM.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/adsp/./CFCM.so.1 with       fopen:2us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/dsp/adsp/./CFCM.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/dsp/./CFCM.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772  2770  2801 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.772   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/dsp/adsp/./CFCM.so.1 with       fopen:4us, fstat:1us, read:6us,       rpc_alloc:36us, mmap:130us fd 0xf error_code 0x0
+11-01 15:22:05.772   531  1939 I audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:1205: Successfully opened file /vendor/dsp/adsp/./CFCM.so.1
+11-01 15:22:05.773  2770  3088 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.773  2770  3510 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+11-01 15:22:05.773  2770  3510 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10187 package com.example.videoframeapp isStopped false
+11-01 15:22:05.773  3566  3701 D SplashScreenView: Build android.window.SplashScreenView{7b6ffed V.E...... ......ID 0,0-0,0}
+11-01 15:22:05.773  3566  3701 D SplashScreenView: Icon: view: android.widget.ImageView{9335e22 V.ED..... ......I. 0,0-0,0 #1020542 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@1d9a0b3 size: 560
+11-01 15:22:05.773  3566  3701 D SplashScreenView: Branding: view: android.view.View{6122670 G.ED..... ......I. 0,0-0,0 #1020541 android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for ./SAPlusCmnModule.so.1 with       fopen:3us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for ./SAPlusCmnModule.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib64/rfs/dsp/adsp/./SAPlusCmnModule.so.1 with       fopen:3us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib64/rfs/dsp/./SAPlusCmnModule.so.1 with       fopen:2us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/adsp/adsp/./SAPlusCmnModule.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/adsp/./SAPlusCmnModule.so.1 with       fopen:2us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/dsp/adsp/./SAPlusCmnModule.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/lib/rfsa/dsp/./SAPlusCmnModule.so.1 with       fopen:1us, fstat:0us, read:0us,       rpc_alloc:0us, mmap:0us fd 0x0 error_code 0x2
+11-01 15:22:05.774   531  1939 D audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:386: apps_std_fopen_fd done for /vendor/dsp/adsp/./SAPlusCmnModule.so.1 with       fopen:3us, fstat:0us, read:18us,       rpc_alloc:23us, mmap:194us fd 0xf error_code 0x0
+11-01 15:22:05.774   531  1939 I audioadsprpcd: vendor/qcom/proprietary/adsprpc/src/apps_std_imp.c:1205: Successfully opened file /vendor/dsp/adsp/./SAPlusCmnModule.so.1
+11-01 15:22:05.774  4440  4480 V OsAgent : broadcastSystemEvent - 7
+11-01 15:22:05.774  1846  1846 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+11-01 15:22:05.775  1608  1608 D Zygote  : Forked child process 14599
+11-01 15:22:05.775  9253  9374 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:05.776  2770  2840 I ActivityManager: Start proc 14599:com.example.videoframeapp/u0a187 for next-top-activity {com.example.videoframeapp/com.example.videoframeapp.MainActivity}
+11-01 15:22:05.776  2770 14600 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcast:1269 com.qualcomm.qti.Performance$SendGameLaunchBroadcast.run:282 java.lang.Thread.run:1119 <bottom of call stack> <bottom of call stack> 
+11-01 15:22:05.776  2770  2840 I ActivityManager: ProcessObserver broadcast disabled
+11-01 15:22:05.778  1755  2998 E gsl     : vendor/qcom/opensource/args/gsl/src/gsl_graph.c:gsl_graph_check_ckvs:813 CKVs mismatched. ACDB CKVs count 4 CKVs sent from HAL count 2
+11-01 15:22:05.778  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.778  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.778  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.778  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.778  1755  2998 D AGM: graph: graph_open: 713 graph_handle 0x147534c
+11-01 15:22:05.778  1755  2998 D AGM: graph: graph_open: 749 exit, ret 0
+11-01 15:22:05.778  1755  2998 I AgmIpc::Server: addSessionHandle sessionId 126 handle b400006f3d20a110 
+11-01 15:22:05.778  1755  2998 D PLUGIN: pcm: agm_pcm_hw_params: 500 agm_pcm_hw_params: mode: 0
+11-01 15:22:05.778  1755  2998 I AGM: session: session_obj_get_tag_with_module_info: 1869 : aif_id=5 , session mode=0
+11-01 15:22:05.778  1755  2998 I PAL: PayloadBuilder: updateCustomPayload: 5426: customPayloadSize = 32
+11-01 15:22:05.778  1755  2998 D AGM: graph: graph_set_config: 1123 entry graph_handle 0x147534c
+11-01 15:22:05.779  1755  2998 D AGM: graph: graph_set_config: 1131 exit, graph handle 0x147534c, ret 0
+11-01 15:22:05.779  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.779  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.779  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.779  1755  2998 E ACDB    : vendor/qcom/opensource/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8643 Error[19]: No calibration found
+11-01 15:22:05.779  1755  2998 D audio_route: Apply path: PM_QOS_Vote
+11-01 15:22:05.779  1755  2998 D AGM: graph: graph_prepare: 813 entry graph_handle 0x147534c
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_pcm_shared_mem_ep: 1761 entry mod tag c0000002 miid 40bd mid 7001000
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_pcm_shared_mem_ep: 1837 exit, ret 0
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_hw_ep_media_config: 697 entry mod tag c0000004 miid 4023 mid 7001023
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_hw_ep_media_config: 727 rate 48000 bw 16 ch 2, data_fmt 1
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_hw_ep_media_config: 737 exit, ret 0
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_codec_dma_ep: 314 cdc_dma intf cfg lpaif 2 indx 1 ch_msk 3
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_codec_dma_ep: 329 exit, ret 0
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_output_media_format: 820 entry mod tag c000000e miid 40bf mid 7001005
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_output_media_format: 951 exit, ret 0
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_output_media_format: 820 entry mod tag c0000010 miid 40c0 mid 7001003
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_output_media_format: 951 exit, ret 0
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_spr: 1996 SPR module IID 4165
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_spr: 2019 HW EP module IID 4023
+11-01 15:22:05.779  1755  2998 D AGM: graph_module: configure_spr_session_time_reset_info: 1980 configured
+11-01 15:22:05.779  1755  2998 D AGM: graph: configure_buffer_params: 202 Enter
+11-01 15:22:05.779  1755  2998 D AGM: graph: configure_buffer_params: 265 Playback sess buf_sz 768 num_bufs 2
+11-01 15:22:05.779  1755  2998 E AGM: graph: configure_buffer_params: 298 Unsupported buffer mode : 0, Default to Blocking
+11-01 15:22:05.779  1755  2998 D AGM: graph: configure_buffer_params: 318 exit, ret 0
+11-01 15:22:05.780 14599 14599 I e.videoframeapp: Late-enabling -Xcheck:jni
+11-01 15:22:05.781  2770  2798 V WindowManager: Sent Transition (#293) createdAt=11-01 15:22:05.763 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=93 effectiveUid=10187 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.example.videoframeapp/.MainActivity } baseActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} topActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} origActivity=null realActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} numActivities=1 lastActiveTime=268835660 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{c921ba1 Task{eb0c1b5 #93 type=standard A=10187:com.example.videoframeapp}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{e2701c6 com.example.videoframeapp.MainActivity} launchCookies=[android.os.BinderProxy@e4a4587] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(369, 838 - 1072, 2278) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1440, 3200) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} topActivityMainWindowFrame=null}, pipChange = null, remoteTransition = RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@438ecb4, appThread = android.app.IApplicationThread$Stub$Proxy@b93d0dd, debugName = QuickstepLaunch }, displayChange = null, flags = 0, debugId = 293 }
+11-01 15:22:05.781  2770  2798 V WindowManager:     startWCT=WindowContainerTransaction { changes= {} hops= [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-01 15:22:05.781  3566 22215 V WindowManagerShell: onTransitionReady(transaction=11897059430091)
+11-01 15:22:05.781  2770  2798 V WindowManager:     info={id=293 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-01 15:22:05.781  2770  2798 V WindowManager:         {WCT{RemoteToken{c921ba1 Task{eb0c1b5 #93 type=standard A=10187:com.example.videoframeapp}}} m=OPEN f=NONE leash=Surface(name=Task=93)/@0x3568225 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:05.781  2770  2798 V WindowManager:         {WCT{RemoteToken{2d71001 Task{6eaede #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0xa7750f7 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:05.781  2770  2798 V WindowManager:         {m=TO_BACK f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{80b3dc6 showWhenLocked=false})/@0x9a8fd91 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0}
+11-01 15:22:05.781  2770  2798 V WindowManager:     ]}
+11-01 15:22:05.781  3566  3633 V WindowManagerShell: onTransitionReady (#293) android.os.BinderProxy@ffde5be: {id=293 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[
+11-01 15:22:05.781  3566  3633 V WindowManagerShell:         {m=OPEN f=NONE leash=Surface(name=Task=93)/@0x2e4be5d sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:05.781  3566  3633 V WindowManagerShell:         {m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x65393d2 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:05.781  3566  3633 V WindowManagerShell:         {m=TO_BACK f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{80b3dc6 showWhenLocked=false})/@0xf0c1ca3 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0}
+11-01 15:22:05.781  3566  3633 V WindowManagerShell:     ]}
+11-01 15:22:05.781  3566  3633 V WindowManagerShell: Playing animation for (#293) android.os.BinderProxy@ffde5be@0
+11-01 15:22:05.781  3566  3633 V WindowManagerShell:  try firstHandler com.android.wm.shell.transition.DefaultMixedHandler@5bb7666
+11-01 15:22:05.781  3566  3633 V WindowManagerShell: Mixed transition for opening an intent with a remote transition and PIP or Desktop #293
+11-01 15:22:05.781  3566  3633 V WindowManagerShell: tryAnimateOpenIntentWithRemoteAndPipOrDesktop
+11-01 15:22:05.781  3566  3633 V WindowManagerShell:  Delegate animation for (#293) to RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1ae9fca, appThread = android.app.IApplicationThread$Stub$Proxy@c45c53b, debugName = QuickstepLaunch }
+11-01 15:22:05.781  1755  2998 D AGM: graph: graph_prepare: 891 exit, ret 0
+11-01 15:22:05.781  1755  2998 D AGM: graph: graph_start: 905 entry graph_handle 0x147534c
+11-01 15:22:05.781  1608  1608 D Zygote  : Forked child process 14602
+11-01 15:22:05.781  3566  3633 V WindowManagerShell:  animated by firstHandler
+11-01 15:22:05.781  2770  2840 I ActivityManager: Start proc 14602:com.qualcomm.qti.workloadclassifier/1000 for broadcast {com.qualcomm.qti.workloadclassifier/com.qualcomm.qti.workloadclassifier.WLCReceiver}
+11-01 15:22:05.782  2770  2840 I ActivityManager: ProcessObserver broadcast disabled
+11-01 15:22:05.782  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.782  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.782  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.783  1755  2998 D AGM: graph: graph_start: 920 exit, ret 0
+11-01 15:22:05.756  2135  2135 E swr-mgr wsa_swr_ctrl: swr_mstr_interrupt: SWR CMD Ignored, fifo status 0x4000000c
+11-01 15:22:05.786  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.787 14602 14602 I kloadclassifier: Using CollectorTypeCMC GC.
+11-01 15:22:05.788 14599 14599 I e.videoframeapp: Using CollectorTypeCMC GC.
+11-01 15:22:05.789 14602 14602 E kloadclassifier: Not starting debugger since process cannot load the jdwp agent.
+11-01 15:22:05.789  5684  5689 I adbd    : jdwp connection from 14599
+11-01 15:22:05.760  2135  2135 E swr-mgr wsa_swr_ctrl: swr_mstr_interrupt: SWR CMD Ignored, fifo status 0x40000009
+11-01 15:22:05.790 14602 14602 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-01 15:22:05.792  2770  3506 D CompatChangeReporter: Compat change id reported: 151861875; UID 1000; state: ENABLED
+11-01 15:22:05.792  2770  3506 D CompatibilityInfo: mCompatibilityFlags - 0
+11-01 15:22:05.792  2770  3506 D CompatibilityInfo: applicationDensity - 560
+11-01 15:22:05.792  2770  3506 D CompatibilityInfo: applicationScale - 1.0
+11-01 15:22:05.792 14599 14599 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-01 15:22:05.764  2135  2135 E swr-mgr wsa_swr_ctrl: swr_mstr_interrupt: SWR CMD Ignored, fifo status 0x40002109
+11-01 15:22:05.794 14602 14602 D nativeloader: Configuring clns-shared-9 for other apk /system_ext/app/workloadclassifier/workloadclassifier.apk. target_sdk_version=35, uses_libraries=, library_path=/system_ext/app/workloadclassifier/lib/arm64:/system_ext/app/workloadclassifier/workloadclassifier.apk!/lib/arm64-v8a:/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/data/user/0/com.qualcomm.qti.workloadclassifier:/system_ext/app/workloadclassifier:/system/lib64:/system_ext/lib64
+11-01 15:22:05.795 14602 14602 D CompatChangeReporter: Compat change id reported: 202956589; UID 1000; state: ENABLED
+11-01 15:22:05.795 14602 14602 I kloadclassifier: AssetManager2(0xb400006ee3205c58) locale list changing from [] to [en-US]
+11-01 15:22:05.795  2770  4006 D CompatibilityInfo: mCompatibilityFlags - 0
+11-01 15:22:05.795  2770  4006 D CompatibilityInfo: applicationDensity - 560
+11-01 15:22:05.795  2770  4006 D CompatibilityInfo: applicationScale - 1.0
+11-01 15:22:05.795 14602 14602 I Perf    : Connecting to perf service.
+11-01 15:22:05.796  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:05.796 14602 14602 V GraphicsEnvironment: Currently set values for:
+11-01 15:22:05.796 14602 14602 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-01 15:22:05.796 14602 14602 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-01 15:22:05.796 14602 14602 V GraphicsEnvironment: com.qualcomm.qti.workloadclassifier is not listed in per-application setting
+11-01 15:22:05.796 14602 14602 V GraphicsEnvironment: ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+11-01 15:22:05.796 14602 14602 V GraphicsEnvironment: com.qualcomm.qti.workloadclassifier is not listed in ANGLE allowlist or settings, returning default
+11-01 15:22:05.796  4440  4480 V OsAgent : broadcastSystemEvent - 7
+11-01 15:22:05.791 14599 14599 W re-initialized>: type=1400 audit(0.0:7829310): avc:  granted  { execute } for  path="/data/data/com.example.videoframeapp/code_cache/startup_agents/5b4f70e9-agent.so" dev="dm-50" ino=26360 scontext=u:r:untrusted_app:s0:c187,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c187,c256,c512,c768 tclass=file app=com.example.videoframeapp
+11-01 15:22:05.768   932   932 I servicemanager: Caller(pid=14602,uid=1000,sid=u:r:system_app:s0) Found vendor.qti.hardware.perf2.IPerf/default in device VINTF manifest.
+11-01 15:22:05.797 14602 14602 E ANDR-PERF-CLIENT-SYS: death recipent object is fine
+11-01 15:22:05.797 14602 14602 W kloadclassifier: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+11-01 15:22:05.768  2135  2135 E swr-mgr wsa_swr_ctrl: swr_mstr_interrupt: SWR CMD Ignored, fifo status 0x40002006
+11-01 15:22:05.798 14599 14599 D nativeloader: Load /data/user/0/com.example.videoframeapp/code_cache/startup_agents/5b4f70e9-agent.so using system ns (caller=<unknown>): ok
+11-01 15:22:05.798 14599 14599 V studio.deploy: Startup agent attached to VM
+11-01 15:22:05.798 14599 14599 V studio.deploy: No existing instrumentation found. Loading instrumentation from instruments-25d868d4.jar
+11-01 15:22:05.799 14602 14630 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.startService:2002 android.content.ContextWrapper.startService:855 android.content.ContextWrapper.startService:855 com.qualcomm.qti.workloadclassifier.WLCReceiver$StartRunnable.run:56 java.lang.Thread.run:1119 
+11-01 15:22:05.800 14602 14602 D nativeloader: Load /system_ext/lib64/libqti_workloadclassifiermodel.so using ns default for caller /system_ext/app/workloadclassifier/workloadclassifier.apk in same partition (is_bridged=0): ok
+11-01 15:22:05.800 14602 14602 I tflite  : Initialized TensorFlow Lite runtime.
+11-01 15:22:05.801  1755  2998 I AGM: session: session_obj_get_tag_with_module_info: 1869 : aif_id=5 , session mode=0
+11-01 15:22:05.801 14602 14631 D WLC-Service: perf mpctl Init Completed
+11-01 15:22:05.801  1755  2998 I PAL: API: pal_stream_start: 455: Exit. status 0
+11-01 15:22:05.801  1755  2998 I AHAL_StreamOut_QTI: configure : usecase: LOW_LATENCY_PLAYBACK, mix port config id:57, IoHandle:13 : stream is configured with ,AudioDevice{type: AudioDeviceDescription{type: OUT_SPEAKER, connection: }, address: AudioDeviceAddress{id: }}
+11-01 15:22:05.801  1755  2998 I AHAL_StreamOut_QTI: configure : usecase: LOW_LATENCY_PLAYBACK, mix port config id:57, IoHandle:13 : completed in 35.6856 ms [pal_stream_open: 3.74901, ms pal_stream_start: 31.8392 ms]
+11-01 15:22:05.801 14602 14631 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+11-01 15:22:05.802 14599 14599 W e.videoframeapp: hiddenapi: DexFile /data/data/com.example.videoframeapp/code_cache/.studio/instruments-25d868d4.jar is in boot class path but is not in a known location
+11-01 15:22:05.802 14602 14631 W SQLiteLog: (28) double-quoted string literal: "com.example.videoframeapp"
+11-01 15:22:05.803 14599 14599 V studio.deploy: Applying transforms with cached classes
+11-01 15:22:05.803  1790  1790 I vendor.qti.hardware.servicetrackeraidl-service: destroyService is called for service : com.qualcomm.qti.workloadclassifier/.WLCService
+11-01 15:22:05.804 14602 14631 I kloadclassifier: System.exit called, status: 0
+11-01 15:22:05.804 14602 14631 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+11-01 15:22:05.807  2770  3506 I ActivityManager: Process com.qualcomm.qti.workloadclassifier (pid 14602) has died: cch+5 CEM 
+11-01 15:22:05.807  1790  1790 I vendor.qti.hardware.servicetrackeraidl-service: killProcess is called for pid : 14602
+11-01 15:22:05.808  2770  2842 I libprocessgroup: Removed cgroup /sys/fs/cgroup/system/uid_1000/pid_14602
+11-01 15:22:05.808  1608  1608 I Zygote  : Process 14602 exited cleanly (0)
+11-01 15:22:05.808  1788  1963 E PERFHAL-UTIL: PERFHAL-UTIL: save_node_val() 266: Failed to read /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+11-01 15:22:05.808  1788  1963 E PERFHAL-OPTSHANDLER: PERFHAL-OPTSHANDLER: modify_sysfsnode() 1204: Failed to read /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+11-01 15:22:05.808  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: AddAndApply() 159: Failed to apply optimization [10, 3]
+11-01 15:22:05.832 14599 14599 W e.videoframeapp: Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
+11-01 15:22:05.832 14599 14599 W e.videoframeapp: Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
+11-01 15:22:05.833 14599 14599 I studio.deploy: Registering DispatchJNI
+11-01 15:22:05.833 14599 14599 I studio.deploy: Found com/android/tools/deploy/interpreter/JNI
+11-01 15:22:05.835  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.876  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.893  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.918  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.934  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.951  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.967  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.976  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:05.992  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:06.008 14599 14599 D nativeloader: Configuring clns-9 for other apk /data/app/~~FMHsiL8sqOUrOIJXWaxQFA==/com.example.videoframeapp-66ey05Nj9L5cHV1xEp359A==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~FMHsiL8sqOUrOIJXWaxQFA==/com.example.videoframeapp-66ey05Nj9L5cHV1xEp359A==/lib/arm64:/data/app/~~FMHsiL8sqOUrOIJXWaxQFA==/com.example.videoframeapp-66ey05Nj9L5cHV1xEp359A==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.example.videoframeapp
+11-01 15:22:06.009  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:06.009 14599 14599 I e.videoframeapp: AssetManager2(0xb400006ee3205c58) locale list changing from [] to [en-US]
+11-01 15:22:06.010 14599 14599 I e.videoframeapp: AssetManager2(0xb400006ee3205f78) locale list changing from [] to [en-US]
+11-01 15:22:06.010 14599 14599 I Perf    : Connecting to perf service.
+11-01 15:22:06.011 14599 14599 V GraphicsEnvironment: Currently set values for:
+11-01 15:22:06.011 14599 14599 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-01 15:22:06.011 14599 14599 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-01 15:22:06.011 14599 14599 V GraphicsEnvironment: com.example.videoframeapp is not listed in per-application setting
+11-01 15:22:06.011 14599 14599 V GraphicsEnvironment: ANGLE allowlist from config: com.dreamgames.royalmatch com.dts.freefiremax com.dxx.firenow com.gramgames.mergedragons com.ludo.king com.mojang.minecraftpe com.my.defense com.nintendo.zaka com.os.airforce com.playrix.fishdomdd.gplay io.teslatech.callbreak jp.konami.prospia net.peakgames.toonblast
+11-01 15:22:06.011 14599 14599 V GraphicsEnvironment: com.example.videoframeapp is not listed in ANGLE allowlist or settings, returning default
+11-01 15:22:06.011 14599 14599 V GraphicsEnvironment: Updatable production driver is not supported on the device.
+11-01 15:22:06.017  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:06.018  2770  3506 I AppsFilter: interaction: PackageSetting{78c431 com.example.videoframeapp/10187} -> PackageSetting{1146583 com.android.launcher3/10139} BLOCKED
+11-01 15:22:06.018  2770  3506 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:06.018  2770  3506 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:06.018  2770  3506 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:06.018  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:06.019  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:06.019 14599 14639 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+11-01 15:22:06.019 14599 14599 I e.videoframeapp: AssetManager2(0xb400006ee32117d8) locale list changing from [] to [en-US]
+11-01 15:22:06.019 14599 14639 D vulkan  : searching for layers in '/data/app/~~FMHsiL8sqOUrOIJXWaxQFA==/com.example.videoframeapp-66ey05Nj9L5cHV1xEp359A==/lib/arm64'
+11-01 15:22:06.019 14599 14639 D vulkan  : searching for layers in '/data/app/~~FMHsiL8sqOUrOIJXWaxQFA==/com.example.videoframeapp-66ey05Nj9L5cHV1xEp359A==/base.apk!/lib/arm64-v8a'
+11-01 15:22:06.022  1796  1796 I qspmHal : enter getGpuProf at: 1073934662
+11-01 15:22:06.022  1796  1796 I qspmHal : Coudn't match the GFX PID 14599 to AT PID 14602. Checking in local cache.
+11-01 15:22:06.022  1796  1796 I qspmHal : Found the GFX PID in cache
+11-01 15:22:06.022  1796  1796 I qspmHal : PID 14599 from GFX matched.
+11-01 15:22:06.022  1796  1796 I qspmHal : gpuProfName:com.example.videoframeapp-gpu - gpu prof_info.path:/data/vendor/gaming/com.example.videoframeapp-gpu
+11-01 15:22:06.022  1796  1796 E qspmHal : GPU profile file NOT found !!
+11-01 15:22:06.023 14599 14639 I AdrenoVK-0: ===== BEGIN DUMP OF OVERRIDDEN SETTINGS =====
+11-01 15:22:06.023 14599 14639 I AdrenoVK-0: ===== END DUMP OF OVERRIDDEN SETTINGS =====
+11-01 15:22:05.993   932   932 I servicemanager: Caller(pid=14599,uid=10187,sid=u:r:untrusted_app:s0:c187,c256,c512,c768) Found vendor.qti.qspmhal.IQspmhal/default in device VINTF manifest.
+11-01 15:22:06.023  1796  1796 I qspmHal : enter getGpuProf at: 1073934663
+11-01 15:22:06.023  1796  1796 I qspmHal : Coudn't match the GFX PID 14599 to AT PID 14602. Checking in local cache.
+11-01 15:22:06.023  1796  1796 I qspmHal : Found the GFX PID in cache
+11-01 15:22:06.023  1796  1796 I qspmHal : PID 14599 from GFX matched.
+11-01 15:22:06.023  1796  1796 I qspmHal : gpuProfName:com.example.videoframeapp-gpu - gpu prof_info.path:/data/vendor/gaming/com.example.videoframeapp-gpu
+11-01 15:22:06.023  1796  1796 E qspmHal : GPU profile file NOT found !!
+11-01 15:22:06.024 14599 14639 I AdrenoVK-0: ===== BEGIN DUMP OF OVERRIDDEN SETTINGS =====
+11-01 15:22:06.024 14599 14639 I AdrenoVK-0: ===== END DUMP OF OVERRIDDEN SETTINGS =====
+11-01 15:22:06.024 14599 14599 D AppCompatDelegate: Checking for metadata for AppLocalesMetadataHolderService : Service not found
+11-01 15:22:06.025 14599 14599 I e.videoframeapp: AssetManager2(0xb400006ee32133f8) locale list changing from [] to [en-US]
+11-01 15:22:06.025 14599 14639 D qdgralloc: Fetching IMapper5 from QtiMapper5
+11-01 15:22:06.025 14599 14599 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+11-01 15:22:05.994   932   932 I servicemanager: Caller(pid=14599,uid=10187,sid=u:r:untrusted_app:s0:c187,c256,c512,c768) Found vendor.qti.qspmhal.IQspmhal/default in device VINTF manifest.
+11-01 15:22:06.030 14599 14639 I SnapAlloc: Graphics lib is available
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: QUALCOMM build          : cc12e2a2b9, I46e2796ccc
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Build Date              : 05/21/25
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Shader Compiler Version : E031.50.08.00
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Local Branch            : 
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Remote Branch           : refs/tags/AU_LINUX_ANDROID_LA.VENDOR.16.2.0.11.00.00.1195.319
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Remote Branch           : NONE
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Reconstruct Branch      : NOTHING
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Build Config            : S P 19.0.2 AArch64
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Driver Path             : /vendor/lib64/hw/vulkan.adreno.so
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Driver Version          : 831.0
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: PFP                     : 0x01510080
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: ME                      : 0x01510016
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Application Name    : android framework
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Application Version : 0x00000000
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Engine Name         : android framework
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Engine Version      : 0x00000000
+11-01 15:22:06.031 14599 14639 I AdrenoVK-0: Api Version         : 0x00401000
+11-01 15:22:06.032 14599 14599 E TransactionExecutor: Failed to execute the transaction: tId:1374012937 ClientTransaction{
+11-01 15:22:06.032 14599 14599 E TransactionExecutor: tId:1374012937   transactionItems=[
+11-01 15:22:06.032 14599 14599 E TransactionExecutor: tId:1374012937     LaunchActivityItem{activityToken=android.os.BinderProxy@d669c54,intent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 xflg=0x4 cmp=com.example.videoframeapp/.MainActivity bnds=[288,2192][576,2612] },ident=198326764,info=ActivityInfo{f5eb313 com.example.videoframeapp.MainActivity},curConfig={1.0 ?mcc0mnc [en_US] ldltr sw411dp w411dp h914dp 560dpi nrml long hdr widecg port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1440, 3200) mAppBounds=Rect(0, 0 - 1440, 3200) mMaxBounds=Rect(0, 0 - 1440, 3200) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.40 fontWeightAdjustment=0},overrideConfig={1.0 ?mcc0mnc [en_US] ldltr sw411dp w411dp h914dp 560dpi nrml long hdr widecg port finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1440, 3200) mAppBounds=Rect(0, 0 - 1440, 3200) mMaxBounds=Rect(0, 0 - 1440, 3200) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.2 fontWeightAdjustment=0},deviceId=0,referrer=null,procState=2,state=null,persistentState=null,pendingResults=null,pendingNewIntents=null,sceneTransitionInfo=null,profilerInfo=null,assistToken=android.os.BinderProxy@28ad2e4,shareableActivityToken=android.os.BinderProxy@1b5734d,activityWindowInfo=ActivityWindowInfo{isEmbedded=false, taskBounds=Rect(0, 0 - 1440, 3200), taskFragmentBounds=Rect(0, 0 - 1440, 3200)}}
+11-01 15:22:06.032 14599 14599 E TransactionExecutor: tId:1374012937     ResumeActivityItem{mActivityToken=android.os.BinderProxy@d669c54,procState=-1,isForward=true,shouldSendCompatFakeFocus=false}
+11-01 15:22:06.032 14599 14599 E TransactionExecutor: tId:1374012937     Target activity: com.example.videoframeapp.MainActivity
+11-01 15:22:06.032 14599 14599 E TransactionExecutor: tId:1374012937   ]
+11-01 15:22:06.032 14599 14599 E TransactionExecutor: tId:1374012937 }
+11-01 15:22:06.032 14599 14599 D AndroidRuntime: Shutting down VM
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: FATAL EXCEPTION: main
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: Process: com.example.videoframeapp, PID: 14599
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity}: java.lang.IllegalStateException: SavedStateRegistry was already restored.
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4283)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4470)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:222)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:133)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:103)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:80)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2826)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:110)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:248)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:338)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:9137)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:940)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: Caused by: java.lang.IllegalStateException: SavedStateRegistry was already restored.
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at androidx.savedstate.internal.SavedStateRegistryImpl.performRestore$savedstate_release(SavedStateRegistryImpl.kt:118)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at androidx.savedstate.SavedStateRegistryController.performRestore(SavedStateRegistryController.android.kt:35)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at androidx.activity.ComponentActivity.onCreate(ComponentActivity.kt:326)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at androidx.fragment.app.FragmentActivity.onCreate(FragmentActivity.java:273)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at com.example.videoframeapp.MainActivity.onCreate(MainActivity.kt:31)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:9155)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:9133)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1524)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4265)
+11-01 15:22:06.032 14599 14599 E AndroidRuntime: 	... 13 more
+11-01 15:22:06.034  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:06.034  2770  3506 W ActivityTaskManager:   Force finishing activity com.example.videoframeapp/.MainActivity
+11-01 15:22:06.034  3566  3633 V WindowManagerShell: Transition requested (#294): android.os.BinderProxy@7b65c15 TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=93 effectiveUid=10187 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.example.videoframeapp/.MainActivity } baseActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} topActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} origActivity=null realActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} numActivities=1 lastActiveTime=268835909 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@5f1cb2a} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{567d1b com.example.videoframeapp.MainActivity} launchCookies=[android.os.BinderProxy@8051f35] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(369, 838 - 1072, 2278) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1440, 3200) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} topActivityMainWindowFrame=null}, pipChange = null, remoteTransition = null, displayChange = null, flags = 16, debugId = 294 }
+11-01 15:22:06.034  2770  3506 D ActivityTrigger: ActivityTrigger activityPauseTrigger 
+11-01 15:22:06.034  2770  3506 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:06.034  2770  3506 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:06.034  2770  3506 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:06.034  1788  1974 E PERFHAL-CONFIG: PERFHAL-CONFIG: GetConfig() 508: Config TFPS undefined for this target
+11-01 15:22:06.035  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: sendEvents() 291: Start hint for app com.example.videoframeapp/com.example.videoframeapp.MainActivity/1, hintID : 4100, hintID hex : 1004 value: -1
+11-01 15:22:06.035  1846  4024 D Dolphin.FeatureManager: mTargetFps = 0.000000
+11-01 15:22:06.035  1770  1851 I ANDR-PWR-OPT: PowerAppClassifier: getAppType() 59: checking app [com.example.videoframeapp] is type 1
+11-01 15:22:06.035  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: isGame() 558: com.example.videoframeapp is Game = 1
+11-01 15:22:06.035  3687  3811 I DynamicDDSService: handleMessage(ACTIVITY_INVOKE{appInfo=com.android.launcher3 isFullScreen=}true)
+11-01 15:22:06.035 14599 14599 I Process : Sending signal. PID: 14599 SIG: 9
+11-01 15:22:06.042  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:06.045  5684  5684 I adbd    : Remote process closed the socket (on MSG_PEEK)
+11-01 15:22:06.046  2770  4006 I ActivityManager: Process com.example.videoframeapp (pid 14599) has died: fg  TOP 
+11-01 15:22:06.046  1608  1608 I Zygote  : Process 14599 exited due to signal 9 (Killed)
+11-01 15:22:06.046  1790  1790 I vendor.qti.hardware.servicetrackeraidl-service: killProcess is called for pid : 14599
+11-01 15:22:06.046  2770  4006 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:06.046  2770  4006 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:06.046  2770  4006 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:06.046  2770  4006 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:06.046  2770  4006 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:06.046  2770  4006 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:06.046  2770  4006 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:06.046  2770  4006 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:06.046  2770  4006 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:06.047  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:06.047  4440  4480 V OsAgent : broadcastSystemEvent - 7
+11-01 15:22:06.047  2770  4006 I HidlServiceManagement: Trying to get transport of vendor.qti.hardware.servicetracker@1.2::IServicetracker/default without hwservicemanager
+11-01 15:22:06.047  2770  4006 W ActivityTaskManager: servicetracker HIDL not available
+11-01 15:22:06.047  2770  4006 E ActivityTaskManager: Unable to get servicetracker HAL instance
+11-01 15:22:06.047  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  2770  2842 I libprocessgroup: Removed cgroup /sys/fs/cgroup/apps/uid_10187/pid_14599
+11-01 15:22:06.047  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1788  1974 E PERFHAL-CONFIG: PERFHAL-CONFIG: GetConfig() 508: Config S3TF undefined for this target
+11-01 15:22:06.047  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1788  1974 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1788  1974 E PERFHAL-CONFIG: PERFHAL-CONFIG: GetConfig() 508: Config TFPS undefined for this target
+11-01 15:22:06.047  1788  1992 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1788  1992 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1788  1992 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1788  1788 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: sendEvents() 291: Start hint for app com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher/36, hintID : 4099, hintID hex : 1003 value: -1
+11-01 15:22:06.047  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:06.047  1788  1992 E PERF_APPCLASSIFIER: PERF_APPCLASSIFIER: getData() 195: DBQuery failed for appName:com.android.launcher3
+11-01 15:22:06.047  2770  3525 D BackgroundInstallControlService: Package event received: 0
+11-01 15:22:06.047  1770  1851 I ANDR-PWR-OPT: PowerAppClassifier: getAppType() 59: checking app [com.android.launcher3] is type 0
+11-01 15:22:06.047  1770  1851 I ANDR-PWR-OPT: GAMEPOWEROPT: isGame() 558: com.android.launcher3 is Game = 0
+11-01 15:22:06.048  4009  4009 D StatsLog: LAUNCHER_ONRESUME
+11-01 15:22:06.048  3566  8912 V WindowManagerShell: onTransitionReady(transaction=11897059430109)
+11-01 15:22:06.048  3566  3633 V WindowManagerShell: onTransitionReady (#294) android.os.BinderProxy@7b65c15: {id=294 t=CLOSE f=0x10 trk=0 r=[0@Point(0, 0)] c=[
+11-01 15:22:06.048  3566  3633 V WindowManagerShell:         {m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0xcd3aeb8 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:06.048  3566  3633 V WindowManagerShell:         {m=CLOSE f=NONE leash=Surface(name=Task=93)/@0xfada491 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:06.048  3566  3633 V WindowManagerShell:         {m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{80b3dc6 showWhenLocked=false})/@0xe396ff6 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0}
+11-01 15:22:06.048  3566  3633 V WindowManagerShell:     ]}
+11-01 15:22:06.048  3566  3633 V WindowManagerShell: Transition (#294) android.os.BinderProxy@7b65c15@0 ready while (#293) android.os.BinderProxy@ffde5be@0 is still animating. Notify the animating transition in case they can be merged
+11-01 15:22:06.048  3566  3633 V WindowManagerShell:    Merge into remote: RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1ae9fca, appThread = android.app.IApplicationThread$Stub$Proxy@c45c53b, debugName = QuickstepLaunch }
+11-01 15:22:06.048  1784  1943 I SnapAlloc: Using graphics libs for alignment calculations
+11-01 15:22:06.049  3566  3633 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#293) android.os.BinderProxy@ffde5be@0
+11-01 15:22:06.054  2770  2798 V WindowManager: Sent Transition (#294) createdAt=11-01 15:22:06.034 via request=TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=93 effectiveUid=10187 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.example.videoframeapp/.MainActivity } baseActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} topActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} origActivity=null realActivity=ComponentInfo{com.example.videoframeapp/com.example.videoframeapp.MainActivity} numActivities=1 lastActiveTime=268835909 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{c921ba1 Task{eb0c1b5 #93 type=standard A=10187:com.example.videoframeapp}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 0 - 0, 0) topActivityInfo=ActivityInfo{e2701c6 com.example.videoframeapp.MainActivity} launchCookies=[android.os.BinderProxy@e4a4587] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isTopActivityNoDisplay=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false isActivityStackTransparent=false lastNonFullscreenBounds=Rect(369, 838 - 1072, 2278) capturedLink=null capturedLinkTimestamp=0 requestedVisibleTypes=-9 topActivityRequestOpenInBrowserEducationTimestamp=0 appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false eligibleForLetterboxEducation= false isLetterboxEducationEnabled= false isLetterboxDoubleTapEnabled= false eligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 topActivityAppBounds=Rect(0, 0 - 1440, 3200) isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false hasMinAspectRatioOverride=false topActivityLetterboxBounds=null cameraCompatTaskInfo=CameraCompatTaskInfo { freeformCameraCompatMode=inactive}} topActivityMainWindowFrame=null}, pipChange = null, remoteTransition = null, displayChange = null, flags = 16, debugId = 294 }
+11-01 15:22:06.054  2770  2798 V WindowManager:     startWCT=WindowContainerTransaction { changes= {} hops= [] errorCallbackToken=null taskFragmentOrganizer=null }
+11-01 15:22:06.054  2770  2798 V WindowManager:     info={id=294 t=CLOSE f=0x10 trk=0 r=[0@Point(0, 0)] c=[
+11-01 15:22:06.054  2770  2798 V WindowManager:         {WCT{RemoteToken{2d71001 Task{6eaede #1 type=home}}} m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0xa7750f7 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:06.054  2770  2798 V WindowManager:         {WCT{RemoteToken{c921ba1 Task{eb0c1b5 #93 type=standard A=10187:com.example.videoframeapp}}} m=CLOSE f=NONE leash=Surface(name=Task=93)/@0x3568225 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},
+11-01 15:22:06.054  2770  2798 V WindowManager:         {m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{80b3dc6 showWhenLocked=false})/@0x9a8fd91 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0}
+11-01 15:22:06.054  2770  2798 V WindowManager:     ]}
+11-01 15:22:06.054  3566  3633 V WindowManagerShell: Playing animation for (#294) android.os.BinderProxy@7b65c15@0
+11-01 15:22:06.054  3566  3633 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+11-01 15:22:06.054  3566  3633 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=294 t=CLOSE f=0x10 trk=0 r=[0@Point(0, 0)] c=[{m=TO_FRONT f=SHOW_WALLPAPER|MOVE_TO_TOP leash=Surface(name=Task=1)/@0xcd3aeb8 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},{m=CLOSE f=NONE leash=Surface(name=Task=93)/@0xfada491 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0 taskParent=-1},{m=TO_FRONT f=IS_WALLPAPER leash=Surface(name=WallpaperWindowToken{80b3dc6 showWhenLocked=false})/@0xe396ff6 sb=Rect(0, 0 - 1440, 3200) eb=Rect(0, 0 - 1440, 3200) epz=Point(1440, 3200) d=0}]}
+11-01 15:22:06.054  3566  3633 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher} launchCookie=null windowingMode=undefined},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined},{NOT atype=undefined independent=true modes=[] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null customAnim=true windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1d932b2, appThread = android.app.IApplicationThread$Stub$Proxy@e990203, debugName = QuickstepLaunchHome }}
+11-01 15:22:06.054  3566  3633 D RemoteTransitionHandler: Found filterPair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher} launchCookie=null windowingMode=undefined},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null windowingMode=undefined},{NOT atype=undefined independent=true modes=[] flags=NONE mustBeTask=true order=ANY topActivity=null launchCookie=null customAnim=true windowingMode=undefined}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1d932b2, appThread = android.app.IApplicationThread$Stub$Proxy@e990203, debugName = QuickstepLaunchHome }}
+11-01 15:22:06.055  3566  3633 V WindowManagerShell:  Delegate animation for (#294) to RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@1d932b2, appThread = android.app.IApplicationThread$Stub$Proxy@e990203, debugName = QuickstepLaunchHome }
+11-01 15:22:06.055  3566  3633 V WindowManagerShell:  animated by com.android.wm.shell.transition.RemoteTransitionHandler@714f580
+11-01 15:22:06.055  2770  3437 I ImeTracker: com.android.launcher3:39e81f96: onRequestHide at ORIGIN_SERVER reason HIDE_SAME_WINDOW_FOCUSED_WITHOUT_EDITOR fromUser false
+11-01 15:22:06.055  2770  2798 V WindowManager: Finish Transition (#293): created at 11-01 15:22:05.763 collect-started=0.068ms request-sent=5.53ms started=7.543ms ready=16.747ms sent=17.167ms commit=2.167ms finished=290.905ms
+11-01 15:22:06.055  4009  4009 D InsetsController: hide(ime(), fromIme=false)
+11-01 15:22:06.055  4009  4009 I ImeTracker: com.android.launcher3:39e81f96: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+11-01 15:22:06.056  4009  4009 D StateManager: cancelAnimation - with ongoing animation, partial trace:
+11-01 15:22:06.056  4009  4009 D StateManager: 	at com.android.launcher3.statemanager.StateManager.setCurrentAnimation(StateManager.java:546)
+11-01 15:22:06.056  4009  4009 D StateManager: 	at com.android.launcher3.QuickstepTransitionManager.createWallpaperOpenAnimations(QuickstepTransitionManager.java:1830)
+11-01 15:22:06.056  4009  4009 D StateManager: 	at com.android.launcher3.QuickstepTransitionManager$WallpaperOpenLauncherAnimationRunner.onAnimationStart(QuickstepTransitionManager.java:1911)
+11-01 15:22:06.056  4009  4009 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-01 15:22:06.056  4009  4009 D StateManager: onStateTransitionEnd - state: AllApps
+11-01 15:22:06.056  4009  4009 D RecentsView: reset - mEnableDrawingLiveTile: false, mRecentsAnimationController: null
+11-01 15:22:06.056  4009  4009 D b/311077782: LauncherAnimationRunner.setAnimation
+11-01 15:22:06.057  9253  9256 W IPCThreadState: Sending oneway calls to frozen process.
+11-01 15:22:06.059  4009  4009 D OverviewActionsView: updateForGroupedTask() called with: isGroupedTask = [false], canSaveAppPair = [false]
+11-01 15:22:06.059  4009  4009 D OverviewActionsView: updateActionButtonsVisibility() called: showSingleTaskActions = [true], showGroupActions = [false]
+11-01 15:22:06.374  3566  3633 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#294) android.os.BinderProxy@7b65c15@0
+11-01 15:22:06.374  2770  2798 V WindowManager: Finish Transition (#294): created at 11-01 15:22:06.034 collect-started=0.026ms request-sent=0.05ms started=1.153ms ready=13.198ms sent=13.725ms commit=8.211ms finished=340.093ms
+11-01 15:22:06.375  3566  3633 V WindowManagerShell: Track 0 became idle
+11-01 15:22:06.375  3566  3633 V WindowManagerShell: All active transition animations finished
+11-01 15:22:06.375  4009  4009 D RecentsView: onTaskRemoved: 93, not handling task stack changes
+11-01 15:22:06.375  4009  4009 D RecentsView: onTaskRemoved: 93, not handling task stack changes
+11-01 15:22:06.534  2770  2801 W ActivityTaskManager: Activity top resumed state loss timeout for ActivityRecord{198326764 u0 com.example.videoframeapp/.MainActivity t-1 f}}
+11-01 15:22:06.617  1785  2039 I SDM     : DisplayBase::CommitThread: Received Idle Timeout, panel: cmd, timeout: 70000 us
+11-01 15:22:07.795  1788  1963 E PERFHAL-UTIL: PERFHAL-UTIL: change_node_val() 204: Failed to update node /proc/sys/walt/sched_per_task_boost with value 14599 0
+11-01 15:22:07.795  1788  1963 E PERFHAL-OPTSHANDLER: PERFHAL-OPTSHANDLER: sched_reset_task_boost() 3669: can't reset task 14599
+11-01 15:22:07.795  1788  1963 E PERFHAL-RESOURCEQS: PERFHAL-RESOURCEQS: RemoveAndApply() 385: Failed to reset optimization [3, 32]

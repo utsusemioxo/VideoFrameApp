@@ -1,10 +1,7 @@
 package com.example.videoframeapp
 
 import android.net.Uri
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -17,69 +14,30 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.net.toUri
 
-class ProcessActivity : AppCompatActivity(){
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val videoUriString = intent.getStringExtra("video_uri")
-        val videoUri = videoUriString?.toUri()
-        setContent {
-            ProcessScreen(
-                videoUri = videoUri,
-                onProcessClick = {
-                    videoUri?.let { uri ->
-                        VideoProcessor.processVideoSafe(uri.toString())
-                    }
-                },
-                onPickGallery = {
-                    pickVideoFromGallery()
-                }
-            )
-        }
-    }
-
-    private fun pickVideoFromGallery() {
-        pickVideoLauncher.launch("video/*")
-    }
-
-    private val pickVideoLauncher =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-            if (uri != null) {
-                setContent { ProcessScreen(
-                    videoUri = uri,
-                    onProcessClick = {
-                        VideoProcessor.processVideoSafe(uri.toString())
-                    },
-                    onPickGallery = {
-                        pickVideoFromGallery()
-                    }
-                )
-                }
-            }
-        }
-
-}
 
 @Composable
 fun ProcessScreen(
-    videoUri: Uri?,
-    onProcessClick: () -> Unit,
-    onPickGallery: () -> Unit
+    initialVideoUri: Uri?,
+    onProcessClick: (Uri) -> Unit
 ) {
+    var videoUriState by remember { mutableStateOf(initialVideoUri) }
     var selectedFactor by remember { mutableStateOf(4) }
     var processing by remember { mutableStateOf(false) }
     var progress by remember { mutableStateOf(0f) }
-    var processedVideoUri by remember { mutableStateOf<Uri?>(null) }
 
-    val scope = rememberCoroutineScope()
+    val selectVideoLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            videoUriState = it               // ⚡ 更新 UI
+            onProcessClick(it)               // ⚡ 传递选中视频
+        }
+    }
 
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -98,7 +56,7 @@ fun ProcessScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "选择的视频: ${videoUri?.lastPathSegment ?: "未选择"}",
+                text = "选择的视频: ${videoUriState?.lastPathSegment ?: "未选择"}",
                 fontSize = 16.sp
             )
 
@@ -110,7 +68,6 @@ fun ProcessScreen(
                     selected = selectedFactor == 4,
                     onClick = { selectedFactor = 4}
                 )
-
                 PressableOption(
                     text = "x8",
                     selected = selectedFactor == 8,
@@ -121,31 +78,35 @@ fun ProcessScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             if (processing) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     LinearProgressIndicator(
                         progress = progress,
                         modifier = Modifier.fillMaxWidth()
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text("处理进度: ${(progress * 100).toInt()}%", fontSize = 14.sp)
-
                 }
-
             } else {
-                Button(onClick = onProcessClick, modifier = Modifier.fillMaxWidth()) {
+                Button(
+                    onClick = { videoUriState?.let { onProcessClick(it) } },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     Text("⚡ 开始处理${selectedFactor}倍插帧")
                 }
 
-                Button(onClick = onPickGallery, modifier = Modifier.fillMaxWidth()) {
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Button(
+                    onClick = { selectVideoLauncher.launch("video/*") },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     Text("📇 库")
                 }
             }
-
         }
     }
 }
+
 
 @Composable
 fun PressableOption(
@@ -184,5 +145,5 @@ fun PressableOption(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewProcessScreen() {
-    ProcessScreen(videoUri = null, onProcessClick = {}, onPickGallery = {})
+    ProcessScreen(initialVideoUri = null, onProcessClick = {})
 }

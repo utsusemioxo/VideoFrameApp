@@ -16,6 +16,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.net.toUri
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,14 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            VideoFrameMainScreen(
-                onRecordClick = {
-                    startActivity(Intent(this, RecordActivity::class.java))
-                },
-                onProcessClick = {
-                    startActivity(Intent(this, ProcessActivity::class.java))
-                }
-            )
+            AppNav()
         }
 
     }
@@ -39,10 +37,67 @@ class MainActivity : AppCompatActivity() {
 }
 
 @Composable
-fun VideoFrameMainScreen(
-    onRecordClick: () -> Unit,
-    onProcessClick: () -> Unit
+fun AppNav(
 ) {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = "mainMenu"
+    ) {
+
+        // 注册 mainMenu
+        composable("mainMenu") {
+            // 将按钮点击事件绑定到导航
+            VideoFrameMainScreen(navController = navController)
+        }
+
+        // 注册其他页面
+        composable("record") {
+            RecordScreen(navController = navController)
+        }
+
+        composable("process?videoUri={videoUri}",
+            arguments = listOf(
+                navArgument("videoUri") { defaultValue = "" }
+            )
+        ) { backStackEntry ->
+            val videoUriString = backStackEntry.arguments?.getString("videoUri")
+            val videoUri = videoUriString?.takeIf { it.isNotEmpty() }?.toUri()
+
+            ProcessScreen(
+                initialVideoUri = videoUri,
+                onProcessClick = {
+                    videoUri?.let { uri ->
+                        VideoProcessor.processVideoSafe(uri.toString())
+                    }
+                }
+            )
+        }
+
+
+        // 对比页面
+        composable(
+            route = "compare?originalUri={originalUri}&processedUri={processedUri}",
+            arguments = listOf(
+                navArgument("originalUri") { defaultValue = "" },
+                navArgument("processedUri") { defaultValue = "" }
+            )
+        ) { backStackEntry ->
+            val originalUri = backStackEntry.arguments?.getString("originalUri")?.toUri()
+            val processedUri = backStackEntry.arguments?.getString("processedUri")?.toUri()
+            CompareScreen(
+                navController = navController,
+                originalUri = originalUri,
+                processedUri = processedUri
+            )
+        }
+    }
+
+}
+
+@Composable
+fun VideoFrameMainScreen(navController: androidx.navigation.NavHostController) {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -62,7 +117,7 @@ fun VideoFrameMainScreen(
             )
 
             Button(
-                onClick = onRecordClick,
+                onClick = { navController.navigate("record") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
@@ -71,7 +126,7 @@ fun VideoFrameMainScreen(
             }
 
             Button(
-                onClick = onProcessClick,
+                onClick = { navController.navigate("process") },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
@@ -82,8 +137,10 @@ fun VideoFrameMainScreen(
     }
 }
 
-@Preview(showBackground = true)
+
+
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun PreviewVideoFrameMainScreen() {
-    VideoFrameMainScreen(onRecordClick = {}, onProcessClick = {})
+fun PreviewAppNav() {
+    AppNav()
 }
